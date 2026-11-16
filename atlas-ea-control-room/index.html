@@ -1,101 +1,83 @@
 <!doctype html>
-<html lang="th">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0a0e13">
-<title>ATLAS — EA Strategy Monitor</title>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1117"><title>ATLAS — EA Strategy Monitor</title>
 <style>
-:root{color-scheme:dark;--bg:#0a0e13;--panel:#151b22;--sub:#1b232c;--line:#303b45;--ink:#ebf0f3;--muted:#a5b3bd;--green:#6cdbb6;--red:#fc8f95}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:13px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:1060px;margin:auto;padding:18px 16px 44px}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-.brand{font-size:21px;font-weight:800;letter-spacing:.06em}.brand span{color:var(--green)}
-small,.muted{color:var(--muted)}.micro{font-size:11px;color:var(--muted)}
-h1{font-size:20px;margin:4px 0 3px}h2{font-size:15px;margin:0}.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:14px 0}
-.kpi,.section,.run{background:var(--panel);border:1px solid var(--line);border-radius:14px}
-.kpi{padding:13px 15px}.kpi b{display:block;font-size:23px;font-variant-numeric:tabular-nums}.kpi small{font-size:11px}
-.section{padding:16px;margin-bottom:12px}.flex{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.flag{border:1px solid #6e4e38;color:#f0c49a;border-radius:22px;padding:3px 9px;font-size:10px;white-space:nowrap}
-.tag{color:var(--green);border:1px solid #3c6b5c;border-radius:20px;padding:3px 9px;font-size:10px}
-.note{color:var(--muted);font-size:11px;margin:8px 0 0}
-.chart{width:100%;height:230px;display:block}.legend{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 2px;color:var(--muted);font-size:11px}
-.legend i{display:inline-block;width:11px;height:4px;vertical-align:middle;margin-right:5px;border-radius:2px}
-.trials{display:grid;gap:12px;margin-top:12px}.run{padding:16px}
-.runhead{display:flex;align-items:start;justify-content:space-between;gap:12px}.runhead h2{font-size:16px}.runhead p{margin:2px 0 0;color:var(--muted);font-size:11px}
-.runmetrics{display:flex;gap:18px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line)}
-.runmetrics div{min-width:67px}.runmetrics b{font-size:17px;display:block;font-variant-numeric:tabular-nums}.runmetrics span{font-size:10px;color:var(--muted)}
-.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:12px}
-.step{text-align:left;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-height:63px;padding:9px 10px;color:var(--ink);font:inherit;background:var(--sub);border:1px solid #34434b;border-radius:10px;cursor:pointer}
-.step:hover,.step:focus-visible,.step.selected{outline:none;border-color:var(--green);background:#1b3733}
-.step .num{font-size:9px;color:var(--green)}.step b{font-size:12px}.step small{font-size:10px;color:#b1c1c9;line-height:1.4}
-.step:after{content:"›";position:absolute;color:var(--green);right:-8px;top:18px;font-size:15px;z-index:1}
-.step:last-child:after{content:""}
-.detail{border:1px solid #386f5c;background:#102923;color:#c3e9da;padding:11px 13px;border-radius:9px;margin-top:9px;font-size:12px}
-.outcome{margin-top:11px;color:#b8c6cc;font-size:11px}.outcome strong{color:#e3ecee}
-.footnote{padding-top:6px;line-height:1.65;font-size:11px;color:var(--muted)}
-.statusline{font-size:11px;color:var(--muted)}
-.bad{color:var(--red)}.good{color:var(--green)}
-@media(max-width:780px){.flow{grid-template-columns:repeat(3,minmax(0,1fr))}.runmetrics{gap:12px}}
-@media(max-width:520px){main{padding:13px 11px 30px}.brand{font-size:19px}.strip{gap:6px}.kpi{padding:10px}.kpi b{font-size:19px}.kpi small{font-size:9px}.section,.run{padding:12px}.chart{height:200px}.flow{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.step{min-height:59px;padding:8px}.step small{font-size:9.5px}.runmetrics{gap:11px}.runmetrics b{font-size:16px}}
-</style>
-</head>
+:root{color-scheme:dark;--bg:#0b1117;--panel:#161f28;--panel2:#1c2933;--stroke:#34434d;--txt:#ecf2f5;--dim:#a5b7c0;--green:#6bdcbd;--red:#fd8894;--amber:#eac28f}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font:13px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1080px;padding:17px 13px 36px;margin:auto}header{display:flex;align-items:center;justify-content:space-between;padding:0 0 12px;border-bottom:1px solid var(--stroke)}
+.logo{font-size:22px;font-weight:850;letter-spacing:.035em}.logo span{color:var(--green)}.tag{color:#9fe7d2;background:#19382f;border-radius:20px;padding:4px 10px;font-size:10px}
+h1{font-size:20px;margin:14px 0 0}h2{font-size:15px;margin:0}small,.muted{color:var(--dim)}.caption{font-size:11px;color:var(--dim)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:15px 0}.kpi,.panel{border:1px solid var(--stroke);border-radius:13px;background:var(--panel)}.kpi{padding:12px}.kpi b{display:block;font-size:23px;margin:3px 0;font-variant-numeric:tabular-nums}.kpi small{font-size:10px}.red{color:var(--red)}.green{color:var(--green)}.amber{color:var(--amber)}
+.panel{padding:15px;margin:12px 0}.headline,.chips,.metrics{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.headline{justify-content:space-between}.chips{margin:11px 0 13px}.chips button{border:1px solid var(--stroke);border-radius:9px;background:#1d2a34;color:var(--txt);font:inherit;padding:9px 12px;cursor:pointer}.chips button.active{background:#1e5044;border-color:#6bdcbd}
+.metrics{gap:22px;margin:11px 0}.metrics div{min-width:70px}.metrics b{display:block;font-size:19px;font-variant-numeric:tabular-nums}.metrics small{font-size:10px}
+svg{width:100%;height:228px;display:block}.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:11px;color:var(--dim);margin-top:4px}.legend i{display:inline-block;width:11px;height:4px;vertical-align:middle;margin-right:5px}
+.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:10px 0}.step{text-align:left;color:var(--txt);cursor:pointer;background:var(--panel2);border:1px solid var(--stroke);border-radius:9px;padding:10px;min-height:68px;font:inherit}.step b,.step small{display:block}.step small{font-size:10px;color:var(--dim)}.step.active{border-color:var(--green);background:#1c3835}.step em{font-size:10px;color:var(--green);font-style:normal}
+.detail{border:1px solid #426e61;background:#152e2b;border-radius:10px;padding:12px;margin:9px 0;font-size:12px}.detail[hidden]{display:none}
+.insight{background:#202a2e;border-left:3px solid var(--amber);border-radius:2px 9px 9px 2px;padding:11px;margin-top:11px;font-size:12px}
+.warning{color:#e5bfa0;font-size:11px;line-height:1.6;margin-top:11px}.hint{font-size:11px;color:var(--dim);line-height:1.6}
+details{border:1px solid var(--stroke);border-radius:11px;margin-top:12px;padding:10px 12px}summary{cursor:pointer;font-weight:650}.oldgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:11px}.oldrun{padding:12px;background:var(--panel2);border-radius:9px}.oldrun b{font-size:16px;display:block}.oldrun small{display:block}
+@media(max-width:700px){.kpis{grid-template-columns:repeat(2,1fr)}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.metrics{gap:15px}.oldgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:390px){.kpi b{font-size:19px}.step{padding:8px}.panel{padding:12px}}
+</style></head>
 <body><main>
-<header><div class="brand">ATLAS <span>/ EA</span></div><span class="tag">RESEARCH • READ ONLY</span></header>
-<div class="flex"><div><h1>Strategy Performance</h1><div class="micro">กลยุทธ์ / ตัวเลข / กราฟ / เงื่อนไข — หน้าเดียว</div></div><span class="flag">BACKTEST · SEP 2026</span></div>
-<div class="strip">
-<div class="kpi"><small>ชุดที่มีผลจริง</small><b id="k-runs">3</b><small>ทดสอบย้อนหลัง</small></div>
-<div class="kpi"><small>ชุดที่กำไรสุทธิ</small><b id="k-profit" class="bad">0</b><small>ยังไม่มี Champion</small></div>
-<div class="kpi"><small>ผลล่าสุด C3</small><b id="k-latest" class="bad">−$12.93</b><small>จาก 4 เทรด</small></div>
+<header><div class="logo">ATLAS <span>/ EA</span></div><span class="tag">R02 · VERIFIED TRADE LIST</span></header>
+<h1>Strategy Performance</h1><div class="caption">XAUUSDc · กันยายน 2026 · ทุนจำลอง $5,000 · ผล Backtest 5 ชุด</div>
+<div class="kpis">
+<div class="kpi"><small>รันทดสอบ</small><b>5</b><small>IST เดือนเดียว</small></div>
+<div class="kpi"><small>ชุดที่กำไร</small><b class="red">0 / 5</b><small>ยังไม่มี Champion</small></div>
+<div class="kpi"><small>PF สูงสุด</small><b id="best-pf">0.91</b><small>Candidate A1</small></div>
+<div class="kpi"><small>DD ปิดสูงสุด</small><b class="red">4.22%</b><small>B1 · Balance DD</small></div>
 </div>
-<section class="section">
- <div class="flex"><h2>เปรียบเทียบ 3 เวอร์ชัน</h2><span class="micro">Closed P/L หลังแต่ละออเดอร์ · USD</span></div>
- <svg class="chart" id="compare" viewBox="0 0 760 230" role="img" aria-label="กราฟ Closed P&L สามชุดทดลอง"><text x="24" y="35" fill="#9aaeb9">กำลังโหลดผลทดสอบ…</text></svg>
- <div id="legend" class="legend"></div>
- <p class="note">ทั้ง 3 ชุดใช้ Exness กันยายน 2026 เดียวกัน และมีออเดอร์ซ้ำ · C1 Lot ต่างจาก C2/C3 จึงเทียบกำไรโดยตรงไม่ได้ว่า Entry ดีขึ้น</p>
+<section class="panel"><div class="headline"><h2>ผลกำไร/ขาดทุนสะสมรายวัน</h2><span class="caption">USD · Closed Balance</span></div><svg id="chart" viewBox="0 0 760 228" aria-label="กราฟกำไรขาดทุนจากการทดสอบ 5 ชุด" role="img"><text x="18" y="28" fill="#a6bac5">กำลังอ่านข้อมูล…</text></svg><div class="legend" id="legend"></div><div class="hint">เส้นกราฟเป็นยอดหลังปิดออเดอร์ ไม่ใช่ Floating Equity · ไม่สามารถนำกำไรของแต่ละชุดมาบวกกันได้</div></section>
+<section class="panel">
+ <div class="headline"><h2>กลยุทธ์และเงื่อนไข</h2><span class="caption">เลือกชุด · แตะ Flow เพื่อดูรายละเอียด</span></div>
+ <div class="chips" id="choose"></div>
+ <div class="headline"><div><strong id="selected-title">—</strong><div class="caption" id="selected-sub">—</div></div><span class="tag">BACKTEST · IST</span></div>
+ <div class="metrics" id="metrics"></div>
+ <div class="flow" id="flow"></div><div class="detail" id="detail" hidden></div>
+ <div class="insight" id="insight"></div><div class="warning" id="limitations"></div>
 </section>
-<div class="flex" style="margin:17px 0 5px"><h2>เงื่อนไขแต่ละชุด</h2><span class="micro">แตะกล่องเพื่ออ่านกฎ</span></div>
-<div id="runs" class="trials"></div>
-<div class="footnote"><b>อ่านผลอย่างถูกต้อง:</b> กราฟนี้ใช้ยอดหลังปิดออเดอร์ ไม่ใช่ Floating Equity DD หรือราคาจริงแบบ Live ข้อมูลทั้งหมดเป็น In-sample เดือนเดียว ยังไม่มี OOS และยังไม่มีระบบส่งคำสั่งเทรดจากหน้าเว็บ</div>
-<div class="statusline" id="source-status" style="margin-top:12px">กำลังโหลดข้อมูลผลทดสอบ…</div>
+<section class="panel"><div class="headline"><h2>ผลที่ต้องใช้ตัดสินรอบถัดไป</h2><span class="caption">Exit vs Re-entry</span></div>
+<div class="insight">A2 ทำให้สัญญาณเดิม 33 ไม้ดีขึ้นจาก −$25.93 เป็น +$8.62 แต่เปิดเพิ่มอีก 10 ไม้ขาดทุนรวม −$47.09 → ผลสุทธิ A2 = −$38.47</div>
+<div class="insight">B2 ทำให้สัญญาณเดิม 27 ไม้ดีขึ้น $62.87 แต่เปิดเพิ่ม 1 ไม้ขาดทุน −$12.59 → ผลสุทธิ B2 = −$77.42</div>
+<div class="hint" style="margin-top:10px">ผลนี้ชี้ว่าการจัดการ Exit กับการเกิด Entry ใหม่มีผลต่อกัน จึงต้องควบคุมสัญญาณจาก Setup เดิมก่อนตัดสินว่า Trailing ช่วยหรือไม่</div>
+</section>
+<details><summary>ประวัติก่อน R02 · C1 / C2 / C3</summary><div id="old" class="oldgrid"></div><div class="hint" style="margin-top:8px">กลุ่มนี้เป็นการแก้และทดสอบฐานเดียวกันในเดือนกันยายน ไม่ใช่ข้อมูลอิสระ</div></details>
+<div id="status" class="hint" style="margin-top:14px">กำลังโหลดข้อมูลจากแหล่งผลทดลอง…</div>
 </main>
 <script>
 (function(){
-'use strict';
 var $=function(id){return document.getElementById(id)};
-var money=function(v){return (Number(v)<0?'−':'')+'$'+Math.abs(Number(v)||0).toFixed(2)};
-var colors=['#f3ba72','#8fb9da','#62dab4'];
-var fallback=[
-{id:'C1-DIAG-B',title:'C1 · ATR Bypass',subtitle:'ปิด ATR Gate · Lot ถูกปัดหยาบ',net_profit:-40.67,profit_factor:.458,win_rate:20,trade_count:5,max_closed_balance_dd:75.07,balance_curve:[5000,5034.41,5015.56,4996.55,4976.27,4959.34],flow:[{name:'Data',summary:'ReservedBars 50',detail:'Exness ก.ย. 2026'},{name:'Trend H1',summary:'EMA50 / EMA200',detail:'กรองแนวโน้ม H1'},{name:'Breakout',summary:'M30 · 20 bars',detail:'ทะลุกรอบ 20 แท่ง M30'},{name:'Retest',summary:'M15 · Level',detail:'รอแตะและกลับยืนระดับ'},{name:'Confirm',summary:'Close ผ่าน Retest',detail:'ปลด ATR<6 ที่เคยบล็อกสัญญาณ'},{name:'Risk',summary:'Decimals 0',detail:'Lot 1.0 ทั้ง 5 ไม้'},{name:'Exit',summary:'SL 2ATR · TP 4ATR',detail:'อิง ATR14'}],change:'ปลด ATR<6',insight:'Lot 1.0 ทั้ง 5 ไม้ ไม่ใช่ Risk คงที่ 0.25% ที่พิสูจน์แล้ว'},
-{id:'C2-WARMUP-250',title:'C2 · Warm-up / Sizing',subtitle:'ReservedBars 250 · Lot ทศนิยม 2 ตำแหน่ง',net_profit:-25.30,profit_factor:.495,win_rate:20,trade_count:5,max_closed_balance_dd:50.07,balance_curve:[5000,5024.77,5012.15,4999.60,4987.23,4974.70],flow:[{name:'Data',summary:'ReservedBars 250',detail:'ตรวจข้อมูลก่อนเข้าเทรด'},{name:'Trend H1',summary:'EMA50 / EMA200',detail:'H1 trend'},{name:'Breakout',summary:'M30 · 20 bars',detail:'กรอบราคา'},{name:'Retest',summary:'M15 · Level',detail:'กลับทดสอบระดับ'},{name:'Confirm',summary:'Close ผ่าน Retest',detail:'ยืนยันแท่งปิด'},{name:'Risk',summary:'Decimals 2',detail:'Lot 0.61–0.74'},{name:'Exit',summary:'SL 2ATR · TP 4ATR',detail:'อิง ATR14'}],change:'เพิ่ม ReservedBars, ปรับ Lot',insight:'ขาดทุนน้อยลงจากขนาดออเดอร์ที่เล็กลง ไม่ใช่หลักฐานว่า Entry ดีขึ้น'},
-{id:'C3-E01',title:'C3 · Structural Confirm',subtitle:'เพิ่มตัวกรอง 3-bar M15',net_profit:-12.93,profit_factor:.657,win_rate:25,trade_count:4,max_closed_balance_dd:37.70,balance_curve:[5000,5024.77,5012.15,4999.60,4987.07],flow:[{name:'Data',summary:'ReservedBars 250',detail:'Exness Sep 2026'},{name:'Trend H1',summary:'EMA50 / EMA200',detail:'H1 Trend'},{name:'Breakout',summary:'M30 · 20 bars',detail:'ยืนยันทะลุกรอบ'},{name:'Retest',summary:'M15 · Level',detail:'แตะและกลับยืน'},{name:'Confirm',summary:'ผ่าน Retest High/Low',detail:'M15 close ยืนยัน'},{name:'Structure',summary:'M15 · 3-bar break',detail:'BUY ปิดสูงกว่า High 3 แท่ง / SELL ต่ำกว่า Low 3 แท่ง'},{name:'Risk',summary:'0.25% · decimals 2',detail:'ต้องทดสอบ minimum lot fail-closed'},{name:'Exit',summary:'SL 2ATR · TP 4ATR',detail:'อิง ATR14'}],change:'เพิ่ม 3-bar structural filter',insight:'ตัด SELL แพ้หนึ่งไม้ในข้อมูลเดิม แต่ผลรวมยังติดลบ'}];
-function svg(tag,attrs,parent,text){var x=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.keys(attrs||{}).forEach(function(k){x.setAttribute(k,String(attrs[k]))});if(text!==undefined)x.textContent=text;parent.appendChild(x);return x}
-function graph(rs){
- var root=$('compare');root.textContent='';var pts=rs.map(function(r){return (r.balance_curve||[5000]).map(function(n){return Number(n)-Number(r.initial_balance||5000)})});
- var vals=pts.reduce(function(a,b){return a.concat(b)},[0]);var low=Math.min.apply(null,vals),high=Math.max.apply(null,vals),pad=Math.max(7,(high-low)*.12);low-=pad;high+=pad;
- var x0=54,y0=16,w=680,h=174,maxN=Math.max.apply(null,pts.map(function(p){return p.length-1}));
- function xx(i){return x0+w*i/Math.max(maxN,1)}function yy(v){return y0+h*(high-v)/(high-low)}
- [-40,-20,0,20,40].filter(function(v){return v>=low&&v<=high}).forEach(function(v){var y=yy(v);svg('line',{x1:x0,y1:y,x2:x0+w,y2:y,stroke:v===0?'#6b8690':'#2c3943','stroke-dasharray':v===0?'4 4':'2 6'},root);svg('text',{x:5,y:y+4,fill:'#9daeb9','font-size':11},root,(v>0?'+':'')+v)});
- pts.forEach(function(p,i){var points=p.map(function(v,j){return xx(j).toFixed(1)+','+yy(v).toFixed(1)}).join(' ');svg('polyline',{points:points,fill:'none',stroke:colors[i], 'stroke-width':3,'stroke-linecap':'round','stroke-linejoin':'round'},root);p.forEach(function(v,j){svg('circle',{cx:xx(j),cy:yy(v),r:j===p.length-1?4:2.4,fill:colors[i]},root)})});
- for(var i=0;i<=maxN;i++)svg('text',{x:xx(i),y:211,'text-anchor':'middle',fill:'#9aaeba','font-size':11},root,i===0?'Start':i);
- var legend=$('legend');legend.textContent='';rs.forEach(function(r,i){var el=document.createElement('span'),m=document.createElement('i');m.style.background=colors[i];el.appendChild(m);el.appendChild(document.createTextNode(r.title.split(' · ')[0]+': '+money(r.net_profit)));legend.appendChild(el)});
+var colors=['#9fa9b7','#81b6df','#63dbc0','#dca073','#d68dca'];
+var cash=function(v){return(Number(v)<0?'−':'')+'$'+Math.abs(Number(v)||0).toFixed(2)};
+var sample=[
+{id:'CONTROL',label:'CONTROL',n:4,w:1,net:-12.93,pf:.657,ddpct:.754,flow:[],daily:Array(30).fill(0)},
+{id:'A1',label:'A1',n:33,w:11,net:-25.93,pf:.905,ddpct:2.487,flow:[],daily:Array(30).fill(0)},
+{id:'A2',label:'A2',n:43,w:16,net:-38.47,pf:.827,ddpct:2.298,flow:[],daily:Array(30).fill(0)},
+{id:'B1',label:'B1',n:27,w:6,net:-127.70,pf:.51,ddpct:4.221,flow:[],daily:Array(30).fill(0)},
+{id:'B2',label:'B2',n:28,w:9,net:-77.42,pf:.612,ddpct:2.76,flow:[],daily:Array(30).fill(0)}];
+function el(tag,attrs,parent,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k])});if(txt!==undefined)e.textContent=txt;parent.appendChild(e);return e}
+function graph(runs){
+var root=$('chart');root.textContent='';
+var low=-150,hi=100,x0=49,y0=15,w=679,h=178;
+function x(i){return x0+i*w/29}function y(v){return y0+(hi-v)*h/(hi-low)}
+[-150,-100,-50,0,50,100].forEach(function(v){el('line',{x1:x0,y1:y(v),x2:735,y2:y(v),stroke:'#34434d','stroke-dasharray':'3 6'},root);el('text',{x:3,y:y(v)+4,fill:'#a5b7c0','font-size':11},root,v)});
+[1,7,14,21,30].forEach(function(i){el('text',{x:x(i-1),y:218,'text-anchor':'middle',fill:'#a5b7c0','font-size':10},root,i)});
+runs.forEach(function(r,i){if(!Array.isArray(r.daily)||r.daily.length!==30)return;var pts=r.daily.map(function(v,j){return x(j).toFixed(1)+','+y(v).toFixed(1)}).join(' ');el('polyline',{points:pts,fill:'none',stroke:colors[i],'stroke-width':i===1?3:2,'stroke-linejoin':'round'},root);el('circle',{cx:x(29),cy:y(r.daily[29]),r:4,fill:colors[i]},root)});
+var legend=$('legend');legend.textContent='';runs.forEach(function(r,i){var p=document.createElement('span'),marker=document.createElement('i');marker.style.backgroundColor=colors[i];p.appendChild(marker);p.appendChild(document.createTextNode(r.id+' '+cash(r.net)));legend.appendChild(p)})}
+function show(r,button,all){
+Array.prototype.forEach.call($('choose').children,function(b){b.classList.toggle('active',b===button)});
+$('selected-title').textContent=r.label;$('selected-sub').textContent=r.source+' · '+r.sqx;
+var m=$('metrics');m.textContent='';[['NET',cash(r.net)],['WIN RATE',(r.w/r.n*100).toFixed(1)+'%'],['PF',r.pf.toFixed(2)],['TRADES',r.n],['CLOSED DD',r.ddpct.toFixed(2)+'%']].forEach(function(pair){var d=document.createElement('div'),s=document.createElement('small'),b=document.createElement('b');s.textContent=pair[0];b.textContent=pair[1];if(pair[0]==='NET')b.className='red';if(pair[0]==='CLOSED DD'&&r.ddpct>3)b.className='red';d.appendChild(b);d.appendChild(s);m.appendChild(d)});
+var f=$('flow');f.textContent='';$('detail').hidden=true;
+(r.flow||[]).forEach(function(step,i){var btn=document.createElement('button');btn.className='step';btn.type='button';var no=document.createElement('em');no.textContent=('0'+(i+1)).slice(-2);var title=document.createElement('b');title.textContent=step[0];var sm=document.createElement('small');sm.textContent=step[1];btn.append(no,title,sm);btn.onclick=function(){if(btn.classList.contains('active')){btn.classList.remove('active');$('detail').hidden=true;return}Array.prototype.forEach.call(f.children,function(x){x.classList.remove('active')});btn.classList.add('active');$('detail').textContent=step[2];$('detail').hidden=false};f.appendChild(btn)});
+$('insight').textContent=r.note;
+$('limitations').textContent='ข้อมูล IST เพียงเดือนเดียว · Spread คงที่ 70 / Slippage 10 · Commission ไม่มี · Swap ปิด · DD เป็น Closed Balance ไม่ใช่ Floating Equity';
 }
-function render(rs){
- rs=rs.slice(0,3);
- $('k-runs').textContent=rs.length;$('k-profit').textContent=rs.filter(function(r){return Number(r.net_profit)>0}).length;$('k-latest').textContent=money((rs.find(function(r){return r.id==='C3-E01'})||rs[rs.length-1]).net_profit);graph(rs);
- var host=$('runs');host.textContent='';
- rs.forEach(function(r){
- var box=document.createElement('article');box.className='run';
- var head=document.createElement('div');head.className='runhead';var name=document.createElement('div');var h=document.createElement('h2');h.textContent=r.title;name.appendChild(h);var sub=document.createElement('p');sub.textContent=r.subtitle;name.appendChild(sub);head.appendChild(name);var badge=document.createElement('span');badge.className='flag';badge.textContent='IST · ยังไม่ผ่าน';head.appendChild(badge);box.appendChild(head);
- var metrics=document.createElement('div');metrics.className='runmetrics';
- [['NET',money(r.net_profit),'bad'],['WIN',Number(r.win_rate).toFixed(0)+'%',''],['PF',Number(r.profit_factor).toFixed(2),''],['TRADES',r.trade_count,''],['CLOSED DD',money(r.max_closed_balance_dd),'']].forEach(function(a){var d=document.createElement('div'),b=document.createElement('b'),s=document.createElement('span');b.textContent=a[1];b.className=a[2];s.textContent=a[0];d.appendChild(b);d.appendChild(s);metrics.appendChild(d)});box.appendChild(metrics);
- var flow=document.createElement('div');flow.className='flow';var detail=document.createElement('div');detail.className='detail';detail.hidden=true;
- (r.flow||[]).forEach(function(f,i){var btn=document.createElement('button');btn.type='button';btn.className='step';var no=document.createElement('span');no.className='num';no.textContent=('0'+(i+1)).slice(-2);var n=document.createElement('b');n.textContent=f.name;var sh=document.createElement('small');sh.textContent=f.summary;btn.appendChild(no);btn.appendChild(n);btn.appendChild(sh);btn.addEventListener('click',function(){if(btn.classList.contains('selected')){btn.classList.remove('selected');detail.hidden=true;return}Array.prototype.forEach.call(flow.children,function(b){b.classList.remove('selected')});btn.classList.add('selected');detail.textContent=f.name+' — '+f.detail;detail.hidden=false});flow.appendChild(btn)});box.appendChild(flow);box.appendChild(detail);
- var outcome=document.createElement('div');outcome.className='outcome';var strong=document.createElement('strong');strong.textContent='เปลี่ยน: '+(r.change||'—');outcome.appendChild(strong);outcome.appendChild(document.createTextNode(' · '+(r.insight||'')));box.appendChild(outcome);host.appendChild(box)
- });
+function display(d){var runs=d.r02.runs;graph(runs);
+var box=$('choose');box.textContent='';runs.forEach(function(r,i){var b=document.createElement('button');b.type='button';b.textContent=r.id;b.onclick=function(){show(r,b,runs)};box.appendChild(b)});if(runs.length)box.children[1].click();
+var old=$('old');old.textContent='';(d.runs||[]).forEach(function(r){var card=document.createElement('div');card.className='oldrun';var name=document.createElement('small');name.textContent=r.title||r.id;var val=document.createElement('b');val.className='red';val.textContent=cash(r.net_profit);var meta=document.createElement('small');meta.textContent='PF '+Number(r.profit_factor||0).toFixed(2)+' · '+(r.trade_count||r.trades_count||0)+' เทรด';card.append(name,val,meta);old.appendChild(card)});
+$('status').textContent='อัปเดตผลจาก SQX Trade List · '+d.updated_at+' · R02 ผ่านการกระทบยอดรายการ / ไม่ผ่าน OOS';
 }
-fetch('./runs.json?v=compact-1',{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('data '+r.status);return r.json()}).then(function(d){if(!d.runs||d.runs.length<3)throw Error('Incomplete');render(d.runs);$('source-status').textContent='ข้อมูล: ผล Trade List ใน runs.json · '+(d.updated_at||'')}).catch(function(err){render(fallback);$('source-status').textContent='แสดงข้อมูลสำรองในหน้าเว็บ (กรุณาตรวจการโหลด runs.json): '+err.message});
+fetch('./runs.json?v=r02-verified-20261117',{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(function(d){if(!d.r02||d.r02.runs.length!==5)throw Error('Invalid R02 payload');display(d)}).catch(function(err){$('status').textContent='ไม่สามารถโหลดผลทดลองล่าสุด: '+err.message+' · กรุณารีเฟรชหน้าเว็บ'});
 })();
-</script>
-</body>
-</html>
+</script></body></html>
