@@ -1,6 +1,6 @@
 {
   "schema": "atlas.research-runs.v2",
-  "updated_at": "2026-11-17",
+  "updated_at": "2026-11-17T03:06:00+07:00",
   "visibility": "public research; no account credentials",
   "readme": "3 HISTORICAL variants on SAME Exness September 2026 period, not 3 independent months or OOS. All have negative net PnL. Closed Balance DD is not floating equity DD.",
   "runs": [
@@ -419,5 +419,468 @@
   "monitor": {
     "connected": false,
     "mode": "SIMULATION_ONLY"
+  },
+  "r02": {
+    "label": "ATLAS Gold R02 · Real SQX Backtests",
+    "period": "2026-09",
+    "is_oos": false,
+    "settings": {
+      "capital": 5000,
+      "symbol": "XAUUSDc_EXNESS_202609_M1_AUDIT",
+      "data_rows": 30157,
+      "data_source_time_zone": "UTC",
+      "precision": "M1 history / M15 primary",
+      "spread": 70,
+      "slippage": 10,
+      "commission": "None",
+      "swap": "Disabled",
+      "money_management_risk_percent": 0.25,
+      "exit_fixed": "SL 2×ATR14 TP 4×ATR14",
+      "exit_managed": "BE +1×ATR14; Trail 1×ATR14 activated +1.5×ATR14",
+      "nature": "In-sample only; not real-money execution and not independently validated future market",
+      "dd_definition": "Max peak-to-trough CLOSED BALANCE; not floating equity DD"
+    },
+    "runs": [
+      {
+        "id": "CONTROL",
+        "label": "CONTROL · C3-E01",
+        "source": "TradelistExport555.xlsx",
+        "sqx": "R02_CONTROL_C3_E01_FIXED_EXIT.sqx",
+        "n": 4,
+        "w": 1,
+        "l": 3,
+        "net": -12.93,
+        "pf": 0.65703,
+        "wr": 25,
+        "dd": 37.7,
+        "ddpct": 0.754,
+        "endBalance": 4987.07,
+        "exits": {
+          "PT": 1,
+          "SL": 3
+        },
+        "flow": [
+          [
+            "H1 Trend",
+            "EMA50 / EMA200",
+            "กรองทิศทางจาก H1 และทิศทาง EMA50"
+          ],
+          [
+            "M30 Breakout",
+            "20-bar High/Low",
+            "รอแท่ง M30 ปิดทะลุกรอบสูงสุด/ต่ำสุด 20 แท่ง"
+          ],
+          [
+            "M15 Retest",
+            "แตะระดับแล้วกลับตัว",
+            "บันทึก Retest High/Low ของ Setup ที่ผ่านเงื่อนไข"
+          ],
+          [
+            "M15 Confirm",
+            "Close ผ่าน Retest",
+            "รอแท่งปิดยืนยันตามทิศทาง Breakout"
+          ],
+          [
+            "Structure",
+            "3-bar follow-through",
+            "ยืนยันการเบรกโครงสร้าง M15 3 แท่ง"
+          ],
+          [
+            "Risk",
+            "0.25% · MM",
+            "Lot จากความเสี่ยงเป้าหมาย แต่ยังไม่ได้พิสูจน์ fail-closed ทุกกรณี"
+          ],
+          [
+            "Exit",
+            "2 ATR SL / 4 ATR TP",
+            "ATR14 fixed SL/TP ไม่มี BE หรือ Trailing"
+          ]
+        ],
+        "daily": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          24.77,
+          12.15,
+          12.15,
+          12.15,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -12.93,
+          -12.93,
+          -12.93,
+          -12.93,
+          -12.93,
+          -12.93,
+          -12.93
+        ],
+        "note": "มีเพียง 4 ออเดอร์; ผลรันซ้ำตรงกับ C3-E01 เดิม; ไม่ใช่หลักฐานความเสถียร"
+      },
+      {
+        "id": "A1",
+        "label": "A1 · Trend Pullback",
+        "source": "TradelistExport111.xlsx",
+        "sqx": "R02_A1_TREND_PULLBACK_FIXED_EXIT.sqx",
+        "n": 33,
+        "w": 11,
+        "l": 22,
+        "net": -25.93,
+        "pf": 0.90521,
+        "wr": 33.333,
+        "dd": 124.37,
+        "ddpct": 2.487,
+        "endBalance": 4974.08,
+        "exits": {
+          "SL": 22,
+          "PT": 10,
+          "EndTest": 1
+        },
+        "flow": [
+          [
+            "H1 Trend",
+            "EMA50/200 + Slope",
+            "BUY EMA50 ≥ EMA200 และ slope ขึ้น; SELL กลับด้าน"
+          ],
+          [
+            "M15 Pullback",
+            "EMA20 reclaim",
+            "รอ Close ที่ข้าม EMA20 จากฝั่งตรงข้ามในทิศทางเทรนด์"
+          ],
+          [
+            "Signal",
+            "Close confirmed",
+            "ใช้แท่ง M15 ปิดและไม่มี Position ตาม Magic"
+          ],
+          [
+            "Risk",
+            "0.25% · ATR14",
+            "SL 2×ATR14 และคำนวณ Lot ตามเป้าหมาย Equity"
+          ],
+          [
+            "Exit",
+            "2ATR SL · 4ATR TP",
+            "เวอร์ชัน Fixed Exit ไม่มี BE/Trailing"
+          ]
+        ],
+        "daily": [
+          0,
+          -12.4,
+          -12.4,
+          -37.32,
+          -37.32,
+          -37.32,
+          -49.74,
+          -37.47,
+          -37.47,
+          -12.77,
+          -0.61,
+          -0.61,
+          -0.61,
+          23.99,
+          11.36,
+          -1.24,
+          -26.19,
+          -26.19,
+          -26.19,
+          -26.19,
+          -51.04,
+          -87.81,
+          -41.01,
+          -28.98,
+          -53.88,
+          -53.88,
+          -53.88,
+          -4.36,
+          -29.23,
+          -25.92
+        ],
+        "note": "PF ใกล้ 1 มากที่สุดใน Candidate ใหม่ แต่ยังขาดทุน; Long 5 / Short 28 และยังไม่มี OOS"
+      },
+      {
+        "id": "A2",
+        "label": "A2 · Pullback + ATR Exit",
+        "source": "TradelistExport222.xlsx",
+        "sqx": "R02_A2_TREND_PULLBACK_ATR_MANAGEMENT.sqx",
+        "n": 43,
+        "w": 16,
+        "l": 27,
+        "net": -38.47,
+        "pf": 0.82681,
+        "wr": 37.209,
+        "dd": 114.91,
+        "ddpct": 2.298,
+        "endBalance": 4961.53,
+        "exits": {
+          "SL": 18,
+          "TrailingStop": 11,
+          "MoveSL2BE": 9,
+          "PT": 4,
+          "EndTest": 1
+        },
+        "flow": [
+          [
+            "H1 Trend",
+            "EMA50/200 + Slope",
+            "BUY EMA50 ≥ EMA200 และ slope ขึ้น; SELL กลับด้าน"
+          ],
+          [
+            "M15 Pullback",
+            "EMA20 reclaim",
+            "รอ Close ที่ข้าม EMA20 จากฝั่งตรงข้ามในทิศทางเทรนด์"
+          ],
+          [
+            "Signal",
+            "Close confirmed",
+            "ใช้แท่ง M15 ปิดและไม่มี Position ตาม Magic"
+          ],
+          [
+            "Risk",
+            "0.25% · ATR14",
+            "SL 2×ATR14 และคำนวณ Lot ตามเป้าหมาย Equity"
+          ],
+          [
+            "ATR Exit",
+            "BE +1 · Trail +1.5",
+            "MoveSL2BE ที่กำไร +1×ATR14; Trailing ระยะ 1×ATR14 เริ่ม +1.5×ATR14; TP 4×ATR14 คงเดิม"
+          ]
+        ],
+        "daily": [
+          0,
+          -12.4,
+          -12.4,
+          -32.92,
+          -32.92,
+          -32.92,
+          -34.17,
+          -46.55,
+          -46.55,
+          -21.85,
+          -9.21,
+          -9.21,
+          -9.21,
+          15.32,
+          15.07,
+          12.08,
+          -12.87,
+          -12.87,
+          -12.87,
+          -12.87,
+          -37.71,
+          -74.64,
+          -65.33,
+          -51.16,
+          -63.33,
+          -63.33,
+          -63.33,
+          -29.13,
+          -41.78,
+          -38.47
+        ],
+        "note": "สัญญาณเดิม A1 ทั้ง 33 ออเดอร์: +$8.62; เพิ่มใหม่ 10 ออเดอร์: −$47.09; Win Rate เพิ่มแต่ Net/PF แย่ลง"
+      },
+      {
+        "id": "B1",
+        "label": "B1 · Session Breakout",
+        "source": "TradelistExport333.xlsx",
+        "sqx": "R02_B1_SESSION_BREAKOUT_FIXED_EXIT.sqx",
+        "n": 27,
+        "w": 6,
+        "l": 21,
+        "net": -127.7,
+        "pf": 0.50981,
+        "wr": 22.222,
+        "dd": 211.03,
+        "ddpct": 4.221,
+        "endBalance": 4872.3,
+        "exits": {
+          "PT": 5,
+          "SL": 21,
+          "EndTest": 1
+        },
+        "flow": [
+          [
+            "M30 Range",
+            "Highest/Lowest 12",
+            "ปิดทะลุกรอบ 12 แท่ง M30 พร้อมเงื่อนไข first close"
+          ],
+          [
+            "M15 Momentum",
+            "Close confirmation",
+            "แท่ง M15 ปิดมี Momentum ทิศทางเดียวกับ Breakout"
+          ],
+          [
+            "Time Gate",
+            "12:00–20:00",
+            "ใช้ SQX test trading options LimitTimeRange 12:00–20:00 ตามนาฬิกาข้อมูล UTC; No Session เป็นการตั้งค่า session อื่น ไม่ได้ปิด TimeRange"
+          ],
+          [
+            "Risk",
+            "0.25% · ATR14",
+            "SL 2×ATR14 และกำหนด Lot ตามแผน"
+          ],
+          [
+            "Exit",
+            "2ATR SL · 4ATR TP",
+            "เวอร์ชัน Fixed Exit ไม่มี BE/Trailing"
+          ]
+        ],
+        "daily": [
+          0,
+          24.88,
+          62.03,
+          49.58,
+          49.58,
+          49.58,
+          49.58,
+          37.05,
+          11.96,
+          36.73,
+          -0.71,
+          -0.71,
+          -0.71,
+          -13.26,
+          -38.19,
+          -38.19,
+          -50.43,
+          -50.58,
+          -50.58,
+          -50.58,
+          -62.89,
+          -62.89,
+          -75.24,
+          -87.46,
+          -99.8,
+          -99.8,
+          -99.8,
+          -112.04,
+          -136.47,
+          -127.7
+        ],
+        "note": "ปิดขาดทุนสุทธิมากที่สุด; Closed-balance DD 4.22% สูงกว่าโจทย์วิจัย DD 3%"
+      },
+      {
+        "id": "B2",
+        "label": "B2 · Breakout + ATR Exit",
+        "source": "TradelistExport444.xlsx",
+        "sqx": "R02_B2_SESSION_BREAKOUT_ATR_MANAGEMENT.sqx",
+        "n": 28,
+        "w": 9,
+        "l": 19,
+        "net": -77.42,
+        "pf": 0.61212,
+        "wr": 32.143,
+        "dd": 137.99,
+        "ddpct": 2.76,
+        "endBalance": 4922.58,
+        "exits": {
+          "PT": 3,
+          "TrailingStop": 6,
+          "SL": 16,
+          "MoveSL2BE": 3
+        },
+        "flow": [
+          [
+            "M30 Range",
+            "Highest/Lowest 12",
+            "ปิดทะลุกรอบ 12 แท่ง M30 พร้อมเงื่อนไข first close"
+          ],
+          [
+            "M15 Momentum",
+            "Close confirmation",
+            "แท่ง M15 ปิดมี Momentum ทิศทางเดียวกับ Breakout"
+          ],
+          [
+            "Time Gate",
+            "12:00–20:00",
+            "ใช้ SQX test trading options LimitTimeRange 12:00–20:00 ตามนาฬิกาข้อมูล UTC; No Session เป็นการตั้งค่า session อื่น ไม่ได้ปิด TimeRange"
+          ],
+          [
+            "Risk",
+            "0.25% · ATR14",
+            "SL 2×ATR14 และกำหนด Lot ตามแผน"
+          ],
+          [
+            "ATR Exit",
+            "BE +1 · Trail +1.5",
+            "MoveSL2BE ที่กำไร +1×ATR14; Trailing ระยะ 1×ATR14 เริ่ม +1.5×ATR14; TP 4×ATR14 คงเดิม"
+          ]
+        ],
+        "daily": [
+          0,
+          28.01,
+          40.46,
+          28.01,
+          28.01,
+          28.01,
+          28.01,
+          15.48,
+          15.63,
+          40.4,
+          15.33,
+          15.33,
+          15.33,
+          2.73,
+          -9.85,
+          -2.76,
+          8.5,
+          -16.58,
+          -16.58,
+          -16.58,
+          -29.04,
+          -23.26,
+          -23.26,
+          -35.67,
+          -48.01,
+          -48.01,
+          -48.01,
+          -60.24,
+          -85,
+          -77.42
+        ],
+        "note": "B1 สัญญาณเดิม 27 รายการใน B2 ดีขึ้น +$62.87; เพิ่มอีก 1 รายการขาดทุน −$12.59; สุดท้ายยังติดลบ"
+      }
+    ],
+    "comparison": {
+      "A1_A2": {
+        "same_entry_rule_xml": true,
+        "common_original_open_signals": 33,
+        "additional_signals_A2": 10,
+        "original_A1_pnl": -25.93,
+        "common_A2_pnl": 8.62,
+        "additional_A2_pnl": -47.09,
+        "net_difference": -12.54
+      },
+      "B1_B2": {
+        "same_entry_rule_xml": true,
+        "common_original_open_signals": 27,
+        "additional_signals_B2": 1,
+        "original_B1_pnl": -127.7,
+        "common_B2_pnl": -64.83,
+        "additional_B2_pnl": -12.59,
+        "net_difference": 50.28
+      }
+    },
+    "limitations": [
+      "All variants use same September 2026 data; none is out of sample",
+      "Commission None; Swap disabled; fixed spread 70 and slippage 10 are simulator assumptions",
+      "Closed balance DD can understate true floating equity DD",
+      "ATR exits may cause earlier flat state and re-entry; duplicate setup prohibition not proven",
+      "C3 contains only 4 trades; result matches previous control",
+      "A1 final balance difference from sum rounded individual PnL is ~ $0.01"
+    ]
   }
 }
