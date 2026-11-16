@@ -1,0 +1,36 @@
+{
+  "schema": "atlas.research-runs.v1",
+  "updated_at": "2026-11-17T01:50:00+07:00",
+  "note": "Public research summaries only; no account or private keys",
+  "runs": [
+    {
+      "id": "C3-E01-EXNESS-202609",
+      "strategy": "C3-E01 · TBR Structural Confirmation",
+      "status": "BASELINE_NEGATIVE",
+      "trades": 4,
+      "wins": 1,
+      "losses": 3,
+      "net_profit": -12.93,
+      "profit_factor": 0.66,
+      "max_dd": 37.7,
+      "initial_capital": 5000,
+      "sample": "2026-09",
+      "source": "SQX backtest trade list previously audited; 4 trades only",
+      "evidence": "Historical only, not OOS"
+    },
+    {
+      "id": "R01-A",
+      "strategy": "Trend Pullback · EMA20",
+      "status": "AWAITING_BACKTEST",
+      "trades": null,
+      "net_profit": null
+    },
+    {
+      "id": "R01-B",
+      "strategy": "Session Breakout 12×M30",
+      "status": "AWAITING_BACKTEST",
+      "trades": null,
+      "net_profit": null
+    }
+  ]
+}
