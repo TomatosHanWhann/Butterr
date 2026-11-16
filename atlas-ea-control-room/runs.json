@@ -1,36 +1,423 @@
 {
-  "schema": "atlas.research-runs.v1",
-  "updated_at": "2026-11-17T01:50:00+07:00",
-  "note": "Public research summaries only; no account or private keys",
+  "schema": "atlas.research-runs.v2",
+  "updated_at": "2026-11-17",
+  "visibility": "public research; no account credentials",
+  "readme": "3 HISTORICAL variants on SAME Exness September 2026 period, not 3 independent months or OOS. All have negative net PnL. Closed Balance DD is not floating equity DD.",
   "runs": [
     {
-      "id": "C3-E01-EXNESS-202609",
-      "strategy": "C3-E01 · TBR Structural Confirmation",
-      "status": "BASELINE_NEGATIVE",
-      "trades": 4,
-      "wins": 1,
-      "losses": 3,
-      "net_profit": -12.93,
-      "profit_factor": 0.66,
-      "max_dd": 37.7,
-      "initial_capital": 5000,
+      "id": "C1-DIAG-B",
+      "title": "C1 · ATR Bypass",
+      "subtitle": "Diagnostic · ปลด ATR<6",
+      "status": "HISTORICAL_IST_ONLY",
       "sample": "2026-09",
-      "source": "SQX backtest trade list previously audited; 4 trades only",
-      "evidence": "Historical only, not OOS"
+      "source": "TradelistExport00002.xlsx",
+      "sqx": "TBR_V1_C1_DIAG_B_ATR_BYPASS_DEC0(1).sqx",
+      "change": "ปลด ATR <6; Decimals 0",
+      "insight": "5 SELL แต่ Lot=1.0 ทุกไม้ จึงยังวัดผล Risk 0.25% ไม่ได้",
+      "trades": [
+        {
+          "id": 1,
+          "open": "2026-09-10 12:00",
+          "direction": "SELL",
+          "lots": 1,
+          "pnl": 34.41,
+          "balance": 5034.41,
+          "exit": "TP",
+          "mae": -4.3,
+          "mfe": 34.41
+        },
+        {
+          "id": 2,
+          "open": "2026-09-11 04:00",
+          "direction": "SELL",
+          "lots": 1,
+          "pnl": -18.85,
+          "balance": 5015.56,
+          "exit": "SL",
+          "mae": -18.85,
+          "mfe": 1.39
+        },
+        {
+          "id": 3,
+          "open": "2026-09-14 09:30",
+          "direction": "SELL",
+          "lots": 1,
+          "pnl": -19.01,
+          "balance": 4996.55,
+          "exit": "SL",
+          "mae": -19.01,
+          "mfe": 33.46
+        },
+        {
+          "id": 4,
+          "open": "2026-09-23 15:30",
+          "direction": "SELL",
+          "lots": 1,
+          "pnl": -20.29,
+          "balance": 4976.27,
+          "exit": "SL",
+          "mae": -20.28,
+          "mfe": 8.27
+        },
+        {
+          "id": 5,
+          "open": "2026-09-24 09:00",
+          "direction": "SELL",
+          "lots": 1,
+          "pnl": -16.93,
+          "balance": 4959.34,
+          "exit": "SL",
+          "mae": -16.93,
+          "mfe": 16.61
+        }
+      ],
+      "trade_count": 5,
+      "wins": 1,
+      "losses": 4,
+      "win_rate": 20,
+      "net_profit": -40.67,
+      "profit_factor": 0.458,
+      "max_closed_balance_dd": 75.07,
+      "initial_balance": 5000,
+      "balance_curve": [
+        5000,
+        5034.41,
+        5015.56,
+        4996.55,
+        4976.27,
+        4959.34
+      ],
+      "flow": [
+        {
+          "name": "Data",
+          "summary": "ReservedBars 50",
+          "detail": "XAUUSDc Sep 2026; M15 เข้า, M30 หา Breakout, H1 กรองเทรนด์; ความพร้อมของ EMA200 H1 ยังต้องยืนยัน"
+        },
+        {
+          "name": "Trend H1",
+          "summary": "EMA50 / EMA200",
+          "detail": "BUY: EMA50≥EMA200 พร้อม slope ขึ้น; SELL กลับด้าน; ใช้ H1 แท่งปิด"
+        },
+        {
+          "name": "Setup M30",
+          "summary": "Breakout 20 bars",
+          "detail": "M30 Close ปิดทะลุ extreme 20 แท่ง และบันทึกระดับ Breakout"
+        },
+        {
+          "name": "Retest M15",
+          "summary": "แตะและปิดฝั่งเดิม",
+          "detail": "แตะ BreakoutLevel แล้วปิดกลับฝั่งที่ถูกต้อง พร้อมบันทึก RetestHigh/Low"
+        },
+        {
+          "name": "Confirm M15",
+          "summary": "Close ผ่าน Retest",
+          "detail": "เข้าเมื่อแท่งปิดผ่าน Retest extreme และ Breakout Level ขณะไม่มี Position; ปลดเงื่อนไข ATR14(M15)<6 ที่เคยบล็อกสัญญาณ"
+        },
+        {
+          "name": "Risk",
+          "summary": "SizeDecimals 0",
+          "detail": "Risk Fixed% ตาม SQX; ขั้นต่ำ Lot/การปัด Volume อาจทำให้ Risk จริงต่างจากที่ตั้ง; ได้ผล Lot=1.0 ทุกไม้ (ปัดหยาบ)"
+        },
+        {
+          "name": "Exit",
+          "summary": "SL 2ATR / TP 4ATR",
+          "detail": "SL=2×ATR14, TP=4×ATR14; ยังไม่มีหลักฐานว่า BE/Trailing เหมาะสมกว่า"
+        }
+      ],
+      "test_settings": {
+        "platform": "StrategyQuant X Pro Build 145",
+        "symbol": "XAUUSDc_EXNESS_202609_M1_AUDIT",
+        "timeframe": "M15 / M30 / H1",
+        "risk_nominal": "0.25% equity",
+        "sl": "2×ATR14",
+        "tp": "4×ATR14",
+        "data": "Sep 2026, IST"
+      }
     },
     {
+      "id": "C2-WARMUP-250",
+      "title": "C2 · Warm-up / Sizing",
+      "subtitle": "Validation · 250 Bars + Lot decimals 2",
+      "status": "HISTORICAL_IST_ONLY",
+      "sample": "2026-09",
+      "source": "TradelistExport1221.xlsx",
+      "sqx": "TBR_C2_WARMUP_250_ONLY_B145(1).sqx",
+      "change": "ReservedBars 250 และสืบทอด SizeDecimals=2 จาก C1-C",
+      "insight": "ได้ 5 ออเดอร์ช่วงเดิมกับ C1-B; ขาดทุนลดลงหลัก ๆ เพราะ Lot เล็กลง ไม่ใช่ Edge ดีขึ้น",
+      "trades": [
+        {
+          "id": 1,
+          "open": "2026-09-10 12:00",
+          "direction": "SELL",
+          "lots": 0.72,
+          "pnl": 24.77,
+          "balance": 5024.77,
+          "exit": "TP",
+          "mae": -3.09,
+          "mfe": 24.77
+        },
+        {
+          "id": 2,
+          "open": "2026-09-11 04:00",
+          "direction": "SELL",
+          "lots": 0.67,
+          "pnl": -12.63,
+          "balance": 5012.15,
+          "exit": "SL",
+          "mae": -12.63,
+          "mfe": 0.93
+        },
+        {
+          "id": 3,
+          "open": "2026-09-14 09:30",
+          "direction": "SELL",
+          "lots": 0.66,
+          "pnl": -12.54,
+          "balance": 4999.6,
+          "exit": "SL",
+          "mae": -12.54,
+          "mfe": 22.08
+        },
+        {
+          "id": 4,
+          "open": "2026-09-23 15:30",
+          "direction": "SELL",
+          "lots": 0.61,
+          "pnl": -12.37,
+          "balance": 4987.23,
+          "exit": "SL",
+          "mae": -12.37,
+          "mfe": 5.04
+        },
+        {
+          "id": 5,
+          "open": "2026-09-24 09:00",
+          "direction": "SELL",
+          "lots": 0.74,
+          "pnl": -12.53,
+          "balance": 4974.7,
+          "exit": "SL",
+          "mae": -12.53,
+          "mfe": 12.29
+        }
+      ],
+      "trade_count": 5,
+      "wins": 1,
+      "losses": 4,
+      "win_rate": 20,
+      "net_profit": -25.3,
+      "profit_factor": 0.495,
+      "max_closed_balance_dd": 50.07,
+      "initial_balance": 5000,
+      "balance_curve": [
+        5000,
+        5024.77,
+        5012.15,
+        4999.6,
+        4987.23,
+        4974.7
+      ],
+      "flow": [
+        {
+          "name": "Data",
+          "summary": "ReservedBars 250",
+          "detail": "XAUUSDc Sep 2026; M15 เข้า, M30 หา Breakout, H1 กรองเทรนด์; ความพร้อมของ EMA200 H1 ยังต้องยืนยัน; เปลี่ยนเป็น 250 แต่ยังไม่ได้พิสูจน์ EMA200 H1 warm-up ครบ"
+        },
+        {
+          "name": "Trend H1",
+          "summary": "EMA50 / EMA200",
+          "detail": "BUY: EMA50≥EMA200 พร้อม slope ขึ้น; SELL กลับด้าน; ใช้ H1 แท่งปิด"
+        },
+        {
+          "name": "Setup M30",
+          "summary": "Breakout 20 bars",
+          "detail": "M30 Close ปิดทะลุ extreme 20 แท่ง และบันทึกระดับ Breakout"
+        },
+        {
+          "name": "Retest M15",
+          "summary": "แตะและปิดฝั่งเดิม",
+          "detail": "แตะ BreakoutLevel แล้วปิดกลับฝั่งที่ถูกต้อง พร้อมบันทึก RetestHigh/Low"
+        },
+        {
+          "name": "Confirm M15",
+          "summary": "Close ผ่าน Retest",
+          "detail": "เข้าเมื่อแท่งปิดผ่าน Retest extreme และ Breakout Level ขณะไม่มี Position; ยังคงปลด ATR<6"
+        },
+        {
+          "name": "Risk",
+          "summary": "SizeDecimals 2",
+          "detail": "Risk Fixed% ตาม SQX; ขั้นต่ำ Lot/การปัด Volume อาจทำให้ Risk จริงต่างจากที่ตั้ง"
+        },
+        {
+          "name": "Exit",
+          "summary": "SL 2ATR / TP 4ATR",
+          "detail": "SL=2×ATR14, TP=4×ATR14; ยังไม่มีหลักฐานว่า BE/Trailing เหมาะสมกว่า"
+        }
+      ],
+      "test_settings": {
+        "platform": "StrategyQuant X Pro Build 145",
+        "symbol": "XAUUSDc_EXNESS_202609_M1_AUDIT",
+        "timeframe": "M15 / M30 / H1",
+        "risk_nominal": "0.25% equity",
+        "sl": "2×ATR14",
+        "tp": "4×ATR14",
+        "data": "Sep 2026, IST"
+      }
+    },
+    {
+      "id": "C3-E01",
+      "title": "C3 · Structural Confirm",
+      "subtitle": "Entry filter · 3-bar M15 follow-through",
+      "status": "HISTORICAL_IST_ONLY",
+      "sample": "2026-09",
+      "source": "TradelistExport2311.xlsx",
+      "sqx": "TBR_C3_E01_STRUCTURAL_CONFIRM_B145(1).sqx",
+      "change": "เพิ่มเงื่อนไขทะลุ High/Low 3 แท่ง M15",
+      "insight": "ตัด SELL 23 ก.ย. ที่แพ้ -12.37; เหลือ 4 ไม้ ยังติดลบ และเสี่ยง Overfitting",
+      "trades": [
+        {
+          "id": 1,
+          "open": "2026-09-10 12:00",
+          "direction": "SELL",
+          "lots": 0.72,
+          "pnl": 24.77,
+          "balance": 5024.77,
+          "exit": "TP",
+          "mae": -3.09,
+          "mfe": 24.77
+        },
+        {
+          "id": 2,
+          "open": "2026-09-11 04:00",
+          "direction": "SELL",
+          "lots": 0.67,
+          "pnl": -12.63,
+          "balance": 5012.15,
+          "exit": "SL",
+          "mae": -12.63,
+          "mfe": 0.93
+        },
+        {
+          "id": 3,
+          "open": "2026-09-14 09:30",
+          "direction": "SELL",
+          "lots": 0.66,
+          "pnl": -12.54,
+          "balance": 4999.6,
+          "exit": "SL",
+          "mae": -12.54,
+          "mfe": 22.08
+        },
+        {
+          "id": 4,
+          "open": "2026-09-24 09:00",
+          "direction": "SELL",
+          "lots": 0.74,
+          "pnl": -12.53,
+          "balance": 4987.07,
+          "exit": "SL",
+          "mae": -12.53,
+          "mfe": 12.29
+        }
+      ],
+      "trade_count": 4,
+      "wins": 1,
+      "losses": 3,
+      "win_rate": 25,
+      "net_profit": -12.93,
+      "profit_factor": 0.657,
+      "max_closed_balance_dd": 37.7,
+      "initial_balance": 5000,
+      "balance_curve": [
+        5000,
+        5024.77,
+        5012.15,
+        4999.6,
+        4987.07
+      ],
+      "flow": [
+        {
+          "name": "Data",
+          "summary": "ReservedBars 250",
+          "detail": "XAUUSDc Sep 2026; M15 เข้า, M30 หา Breakout, H1 กรองเทรนด์; ความพร้อมของ EMA200 H1 ยังต้องยืนยัน"
+        },
+        {
+          "name": "Trend H1",
+          "summary": "EMA50 / EMA200",
+          "detail": "BUY: EMA50≥EMA200 พร้อม slope ขึ้น; SELL กลับด้าน; ใช้ H1 แท่งปิด"
+        },
+        {
+          "name": "Setup M30",
+          "summary": "Breakout 20 bars",
+          "detail": "M30 Close ปิดทะลุ extreme 20 แท่ง และบันทึกระดับ Breakout"
+        },
+        {
+          "name": "Retest M15",
+          "summary": "แตะและปิดฝั่งเดิม",
+          "detail": "แตะ BreakoutLevel แล้วปิดกลับฝั่งที่ถูกต้อง พร้อมบันทึก RetestHigh/Low"
+        },
+        {
+          "name": "Confirm M15",
+          "summary": "Close ผ่าน Retest",
+          "detail": "เข้าเมื่อแท่งปิดผ่าน Retest extreme และ Breakout Level ขณะไม่มี Position"
+        },
+        {
+          "name": "Microstructure",
+          "summary": "0.25% · Decimals 2",
+          "detail": "BUY: Close(M15)[1]≥Highest(High,3)[2]; SELL: Close(M15)[1]<Lowest(Low,3)[2]; เพิ่มเหนือ Confirm เดิม"
+        },
+        {
+          "name": "Risk",
+          "summary": "0.25% · ตรวจ Lot",
+          "detail": "Risk Fixed% ตาม SQX; ขั้นต่ำ Lot/การปัด Volume อาจทำให้ Risk จริงต่างจากที่ตั้ง"
+        },
+        {
+          "name": "Exit",
+          "summary": "SL 2ATR / TP 4ATR",
+          "detail": "SL=2×ATR14, TP=4×ATR14; ยังไม่มีหลักฐานว่า BE/Trailing เหมาะสมกว่า"
+        }
+      ],
+      "test_settings": {
+        "platform": "StrategyQuant X Pro Build 145",
+        "symbol": "XAUUSDc_EXNESS_202609_M1_AUDIT",
+        "timeframe": "M15 / M30 / H1",
+        "risk_nominal": "0.25% equity",
+        "sl": "2×ATR14",
+        "tp": "4×ATR14",
+        "data": "Sep 2026, IST"
+      }
+    }
+  ],
+  "candidates": [
+    {
       "id": "R01-A",
-      "strategy": "Trend Pullback · EMA20",
+      "title": "Trend Pullback EMA20",
       "status": "AWAITING_BACKTEST",
-      "trades": null,
-      "net_profit": null
+      "flow": [
+        "H1 EMA50/200 slope",
+        "M15 EMA20 pullback",
+        "Close confirms",
+        "0.25% nominal risk",
+        "2ATR SL / 4ATR TP"
+      ],
+      "note": "No verified results"
     },
     {
       "id": "R01-B",
-      "strategy": "Session Breakout 12×M30",
+      "title": "Session Breakout 12×M30",
       "status": "AWAITING_BACKTEST",
-      "trades": null,
-      "net_profit": null
+      "flow": [
+        "M30 12-bar breakout",
+        "M15 momentum",
+        "Session 12:00–20:00 data time",
+        "0.25% nominal risk",
+        "2ATR SL / 4ATR TP"
+      ],
+      "note": "No verified results; session timezone pending"
     }
-  ]
+  ],
+  "monitor": {
+    "connected": false,
+    "mode": "SIMULATION_ONLY"
+  }
 }
