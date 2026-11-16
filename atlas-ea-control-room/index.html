@@ -2,12 +2,52 @@
 <html lang="th"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090e13"><title>ATLAS — EA Research Monitor</title>
 <style>
 :root{color-scheme:dark;--bg:#0b1016;--p:#151e27;--b:#2a3641;--t:#e9f0f2;--m:#a5b4bf;--g:#58d4b0;--r:#ff7f8c;--y:#f1b76e}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font:14px/1.55 system-ui,"Noto Sans Thai",sans-serif}.wrap{max-width:1150px;margin:auto;padding:20px}header{background:#111920;border-bottom:1px solid var(--b)}header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}h1{font-size:25px;letter-spacing:1.8px;margin:0}h1 span{color:var(--g)}h2{font-size:17px;margin:0 0 12px}h3{margin:8px 0;font-size:15px}p{margin:7px 0}small,.muted{color:var(--m)}.badge{display:inline-block;color:#b8efd7;border:1px solid #416f60;border-radius:25px;font-size:11px;padding:4px 10px}.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}.tabs button,button,.btn{background:#1d2a33;border:1px solid #475661;border-radius:10px;padding:10px 12px;color:var(--t);cursor:pointer;font:inherit;text-decoration:none}.tabs button.active,.primary{background:#245447;border-color:#4e997e}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric,.card{background:var(--p);border:1px solid var(--b);border-radius:15px;padding:17px}.metric strong{display:block;font-size:27px;margin:6px 0;font-variant-numeric:tabular-nums}.metric span{font-size:12px;color:var(--m)}.red{color:var(--r)}.green{color:var(--g)}.yellow{color:var(--y)}.card{margin:14px 0}.notice{border:1px solid #6b5737;background:#30271b;color:#f5d6a6;border-radius:12px;padding:12px;margin-bottom:16px}.rows{overflow-x:auto}table{width:100%;min-width:620px;border-collapse:collapse;font-size:13px}th,td{text-align:left;border-bottom:1px solid #32404a;padding:11px 8px}th{color:var(--m)}.flex{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.form{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}label{font-size:12px;color:var(--m);display:grid;gap:5px}input{color:var(--t);padding:10px;border:1px solid #495967;background:#101922;border-radius:8px;width:100%;min-width:0;font:inherit}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0a1117;border:1px solid #34414b;border-radius:10px;min-height:150px;max-height:310px;overflow:auto;padding:13px;color:#aedecf;font:12px/1.7 monospace}.hidden{display:none}.chart{width:100%;height:210px}.hint{font-size:12px;color:var(--m)}footer{padding:25px;color:var(--m);text-align:center}.switch{display:flex;align-items:center;gap:8px}@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.form{grid-template-columns:repeat(2,1fr)}}@media(max-width:480px){.wrap{padding:14px}.grid{grid-template-columns:1fr 1fr}.metric strong{font-size:23px}.form{grid-template-columns:1fr 1fr}h1{font-size:21px}}
+
+/* Strategy Atlas v3 */
+.atlas-eyebrow{font-size:11px;color:#a6b7be;letter-spacing:.09em;font-weight:700;text-transform:uppercase}
+.labhero{display:grid;grid-template-columns:1.4fr 1fr;gap:13px}
+.labpanel{border:1px solid var(--b);background:var(--p);border-radius:16px;padding:18px;min-width:0}
+.labstats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.labstat{background:#101920;border:1px solid #28343f;border-radius:12px;padding:12px}
+.labstat strong{display:block;font-size:24px;font-variant-numeric:tabular-nums;margin:4px 0}
+.labstat small{font-size:11px}
+.labselectors{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.labselectors button{border-radius:11px;font-weight:650}
+.labselectors button.active{border-color:#59d3ae;background:#1e4b42}
+.labflow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:14px 0}
+.flowtile{position:relative;min-width:0;text-align:left;display:flex;flex-direction:column;gap:3px;padding:13px;background:#111c24;border:1px solid #34434b;border-radius:12px;cursor:pointer;color:var(--t);font:inherit;transition:border-color .15s}
+.flowtile:hover,.flowtile:focus{border-color:#58d4b0}
+.flowtile::after{content:"→";position:absolute;right:-10px;top:40%;z-index:2;color:#6dd8ba;background:#0b1016;border-radius:10px;font-size:15px}
+.flowtile:last-child::after{display:none}
+.flowtile .no{color:#71dbbc;font-size:10px;font-weight:700;letter-spacing:.1em}
+.flowtile b{font-size:13px}
+.flowtile small{color:#a6b6c2;font-size:11px}
+.labdetail{padding:13px;border:1px solid #376c5d;background:#112a27;border-radius:12px;min-height:70px;font-size:13px;line-height:1.7}
+.labdetail b{color:#8af0d1}
+.labchart{display:block;width:100%;height:240px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;color:#b6c7cf;font-size:12px;margin:6px 0}
+.legend i{display:inline-block;width:12px;height:4px;border-radius:5px;margin-right:6px;vertical-align:middle}
+.labgrid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.labgrid2 .labpanel{margin:0}
+.labtrade{max-height:280px;overflow:auto}
+.labnotice{border-left:3px solid #efb776;background:#2b251d;padding:11px 13px;margin:12px 0;border-radius:0 8px 8px 0;color:#edcda7;font-size:12px}
+.labcall{font-size:12px;color:#b4c2cb}
+.labfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.labfacts div{border:1px solid #34434a;border-radius:10px;padding:9px;font-size:11px;color:#aabac3}
+.labfacts strong{display:block;color:#ebf2f2;font-size:14px;margin-top:2px}
+.labdrawer[open]>summary{border-color:#58d4b0}
+.labdrawer summary{cursor:pointer;padding:12px;border-radius:11px;border:1px solid #3a4a55;background:#132129;margin:8px 0;list-style:none;font-weight:650}
+.labdrawer summary::after{content:"＋";float:right;color:#8fe4cc}
+.labdrawer[open] summary::after{content:"−"}
+.labdrawer .body{padding:6px 12px 14px;color:#bccbd2;font-size:12px}
+@media(max-width:850px){.labhero,.labgrid2{grid-template-columns:1fr}.labflow{grid-template-columns:repeat(2,minmax(0,1fr))}.flowtile:nth-child(2n)::after{display:none}}
+@media(max-width:480px){.labstats{grid-template-columns:repeat(3,minmax(0,1fr))}.labstat{padding:8px}.labstat strong{font-size:20px}.labflow{grid-template-columns:repeat(2,minmax(0,1fr))}.labfacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style></head>
 <body><header><div class="wrap"><h1>ATLAS<span> / EA LAB</span></h1><span class="badge">READ-ONLY RESEARCH</span></div></header>
 <main class="wrap">
 <div class="notice"><b>ต้นแบบสาธิต — ไม่ใช่บัญชีเทรดจริง</b> ข้อมูล Backtest ระบุแหล่งอ้างอิงแยกจากข้อมูลจำลอง ไม่มีการเชื่อม MT5, ราคาทอง Real-time หรือการส่งคำสั่งเทรด</div>
 <div class="flex"><div><h2>EA Research & Daily Monitor</h2><p class="muted">เก็บผล StrategyQuant • ตรวจ Candidate • สาธิต Data Flow ตามเวลา</p></div><small id="updated">กำลังโหลดผลทดลอง…</small></div>
-<nav class="tabs"><button data-tab="overview" class="active">ภาพรวม</button><button data-tab="runs">ผลทดลอง</button><button data-tab="monitor">Monitor จำลอง</button><button data-tab="import">นำเข้า CSV</button><button data-tab="architecture">ระบบและคะแนน</button></nav>
+<nav class="tabs"><button data-tab="overview" class="active">ภาพรวม</button><button data-tab="lab">กลยุทธ์ & Flow</button><button data-tab="runs">ผลทดลอง</button><button data-tab="monitor">Monitor จำลอง</button><button data-tab="import">นำเข้า CSV</button><button data-tab="architecture">ระบบและคะแนน</button></nav>
 <section id="overview"><div class="grid">
 <div class="metric"><span>ผล C3-E01 (ย้อนหลัง)</span><strong class="red">−$12.93</strong><small>Sample ก.ย. 2026</small></div>
 <div class="metric"><span>Profit Factor</span><strong>0.66</strong><small>ไม่ได้พิสูจน์ OOS</small></div>
@@ -15,6 +55,40 @@
 <div class="metric"><span>Max DD ที่รายงาน</span><strong>$37.70</strong><small>ประมาณ 0.75% ของ $5,000</small></div>
 </div><div class="card"><h2>ผลทดสอบที่บันทึกไว้</h2><div class="rows"><table><thead><tr><th>Candidate</th><th>สถานะ</th><th>จำนวนเทรด</th><th>Net P/L</th><th>หลักฐาน</th></tr></thead><tbody id="runs-overview"></tbody></table></div></div>
 <div class="card"><h2>หลักการคัด Champion</h2><p>ต้องผ่านความถูกต้องของกฎ → กำไรสุทธิหลังต้นทุน → จำนวนตัวอย่างเพียงพอ → OOS → Robustness → Risk Guard → Forward Demo</p><p class="muted">เป้าหมาย 10%+/เดือน และ DD ≤3% เป็นโจทย์วิจัย ไม่ใช่ผลที่รับประกัน</p></div></section>
+
+<section id="lab" class="hidden">
+<div class="flex"><div><div class="atlas-eyebrow">STRATEGY ATLAS / VERIFIED HISTORY</div><h2>3 ชุดทดลอง · Flow + Evidence</h2><p class="muted">กดกล่องเพื่อดูเงื่อนไขจริง แล้วเปรียบเทียบผลที่เกิดขึ้น</p></div><span class="badge">SQX • SEPTEMBER 2026</span></div>
+<div class="labnotice">3 ชุดนี้ใช้ข้อมูลเดือนเดียวและมีออเดอร์ซ้ำกัน จึงห้ามนำผลรวมทั้งสามชุดมาบวกเป็นกำไรหรือสรุปว่าเป็น 3 กลยุทธ์อิสระ · ทุกชุดยังขาดทุน</div>
+<div class="labhero">
+<div class="labpanel">
+ <div class="atlas-eyebrow">Performance / Net P&L</div><h3>ผลสุทธิแต่ละเวอร์ชัน (USD)</h3>
+ <svg id="lab-bars" class="labchart" viewBox="0 0 640 240" role="img" aria-label="กราฟกำไรสุทธิเปรียบเทียบสามเวอร์ชัน"><text x="14" y="28" fill="#aabdc6">กำลังโหลดกราฟ…</text></svg>
+ <div class="labcall">เปรียบเทียบการทดสอบของฐานเดียวกัน ไม่ใช่กำไรสะสม</div>
+</div>
+<div class="labpanel">
+ <div class="atlas-eyebrow">Selected / overview</div><h3 id="lab-title">เลือกกลยุทธ์</h3>
+ <div class="labstats">
+ <div class="labstat"><small>NET P/L</small><strong id="lab-pnl">—</strong></div>
+ <div class="labstat"><small>WIN RATE</small><strong id="lab-win">—</strong></div>
+ <div class="labstat"><small>TRADES</small><strong id="lab-count">—</strong></div>
+ </div>
+ <div class="labfacts">
+ <div>Profit Factor<strong id="lab-pf">—</strong></div>
+ <div>Closed Balance DD<strong id="lab-dd">—</strong></div>
+ <div>ตัวอย่าง<strong>Sep 2026 · IST</strong></div>
+ </div>
+ <p class="labcall" id="lab-insight">เลือกเวอร์ชันเพื่อดูผลวิเคราะห์</p>
+</div></div>
+<div class="labselectors" id="lab-selectors" role="group" aria-label="เลือกชุดทดลอง"></div>
+<div class="labpanel"><div class="flex"><div><div class="atlas-eyebrow">Rule engine / readable flow</div><h3>เชื่อมโยงเงื่อนไขที่ใช้จริง</h3></div><span class="badge">แตะเพื่ออ่านรายละเอียด</span></div>
+<div id="lab-flow" class="labflow"></div><div id="lab-detail" class="labdetail" role="status">เลือกเงื่อนไขจากกล่องด้านบน</div></div>
+<div class="labgrid2" style="margin-top:14px">
+ <div class="labpanel"><div class="atlas-eyebrow">Closed trades / historical</div><h3>เส้นทาง Balance หลังปิดแต่ละไม้</h3><svg id="lab-equity" class="labchart" viewBox="0 0 640 240" role="img" aria-label="เส้นยอดเงินหลังปิดออเดอร์"><text x="14" y="28" fill="#aabdc6">รอข้อมูล…</text></svg><p class="labcall">Closed Balance เท่านั้น · ไม่ใช่ Floating Equity หรือ Drawdown ที่ใช้ตัดสินกฎ Prop Firm</p></div>
+ <div class="labpanel"><div class="atlas-eyebrow">Research delta</div><h3>เปลี่ยนอะไร และเราเรียนรู้อะไร</h3><p id="lab-change"></p><p id="lab-learn" class="muted"></p><details class="labdrawer"><summary>หลักฐานและข้อจำกัด</summary><div class="body" id="lab-source"></div></details><details class="labdrawer"><summary>การตรวจสอบก่อนใช้เงินจริง</summary><div class="body">ผลทดลองทั้งหมดเป็น In-sample ระยะสั้น ต้องผ่าน OOS, ตรวจสัญญาโบรกเกอร์, Spread/Slippage/Commission, Risk fail-closed, DD Guard และ Forward Demo ก่อนประเมินความพร้อมใช้งาน</div></details></div>
+</div>
+<div class="labpanel" style="margin-top:14px"><div class="flex"><h3>รายการออเดอร์ย้อนหลัง · คลิกเพื่อดูผล</h3><small>ตัวเลขจาก Trade List SQX</small></div><div class="rows labtrade"><table><thead><tr><th>เข้าเทรด</th><th>ทิศทาง</th><th>Lot</th><th>ผล ($)</th><th>ยอดหลังปิด ($)</th><th>Close</th><th>MFE ($)</th></tr></thead><tbody id="lab-trades"></tbody></table></div></div>
+<div class="labpanel" style="margin-top:14px"><div class="atlas-eyebrow">Incoming research / not tested</div><h3>กลยุทธ์ใหม่ที่รอผล SQX</h3><div id="lab-candidates" class="labgrid2"></div></div>
+</section>
 <section id="runs" class="hidden"><div class="card"><div class="flex"><h2>Research Runs จากไฟล์สรุป</h2><button id="reload">รีเฟรชข้อมูล</button></div><div class="rows"><table><thead><tr><th>Run ID</th><th>กลยุทธ์</th><th>สถานะ</th><th>Trades</th><th>Net Profit</th><th>PF</th><th>DD</th></tr></thead><tbody id="run-table"></tbody></table></div><p class="hint">ปรับปรุงผลรวมผ่านการตรวจ Trade List ในบทสนทนา แล้วอัปเดตไฟล์ runs.json รุ่นที่เผยแพร่ ไม่แก้ไขข้อมูลบัญชีจริงในหน้าเว็บสาธารณะ</p></div></section>
 <section id="monitor" class="hidden"><div class="card"><div class="flex"><div><h2>Data Flow Sandbox</h2><p class="muted">จำลอง Snapshot แบบทุก 3 วินาที เพื่อทดสอบ UI และความต่อเนื่องของข้อมูล</p></div><div class="flex"><button id="start" class="primary">เริ่มจำลอง</button><button id="pause">หยุด</button><button id="reset">รีเซ็ต</button></div></div><div class="grid"><div class="metric"><span>Feed State</span><strong id="feed-state" class="yellow">OFFLINE</strong></div><div class="metric"><span>ราคาจำลอง XAUUSD</span><strong id="px">—</strong></div><div class="metric"><span>Mock Equity</span><strong id="equity">—</strong></div><div class="metric"><span>Events รับเข้า</span><strong id="event-count">0</strong></div></div><p class="hint">ข้อมูลตัวเลขในส่วนนี้เป็น SIMULATION 100% ไม่ใช่ข้อมูลตลาดจริง</p><div class="card" style="margin-bottom:0"><h3>Equity Flow (Mock)</h3><svg id="line" class="chart" viewBox="0 0 680 210" preserveAspectRatio="none" aria-label="mock equity chart"><path id="line-path" d="" fill="none" stroke="#58d4b0" stroke-width="3"/></svg></div><h3>Event Stream</h3><pre id="events">[idle] ยังไม่รับข้อมูล</pre></div></section>
 <section id="import" class="hidden"><div class="card"><h2>เปิด CSV เพื่อดูผลในมือถือ / คอม</h2><p>สามารถเลือกไฟล์ CSV ที่ Export จาก StrategyQuant มาดูในเครื่องของคุณ ข้อมูลไม่ถูกส่งขึ้น Server</p><input type="file" id="csv" accept=".csv,text/csv"><p class="hint">ใช้สำหรับตรวจข้อมูลขั้นต้นเท่านั้น CSV บางรูปแบบต้องแปลงก่อน และการนำเข้าที่นี่ไม่ได้เขียนทับประวัติผลทดลองส่วนกลาง</p><div id="csv-preview" class="rows"></div></div></section>
@@ -24,9 +98,36 @@
 const q=s=>document.querySelector(s);const esc=s=>String(s??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const fallback={runs:[{id:'C3-E01',strategy:'TBR Structural Confirmation',status:'BASELINE_NEGATIVE',trades:4,net_profit:-12.93,profit_factor:0.66,max_dd:37.70},{id:'R01-A',strategy:'Trend Pullback',status:'AWAITING_BACKTEST'},{id:'R01-B',strategy:'Session Breakout',status:'AWAITING_BACKTEST'}]};
 async function loadRuns(){try{const r=await fetch('./runs.json?at='+Date.now(),{cache:'no-store'});if(!r.ok)throw Error(r.status);const d=await r.json();draw(d);q('#updated').textContent='ข้อมูลสรุป: '+(d.updated_at||'ระบุเวลาไม่ได้');}catch(e){draw(fallback);q('#updated').textContent='ใช้ข้อมูลสำรองในหน้าเว็บ · '+e.message;}}
 function draw(d){const runs=d.runs||[];q('#runs-overview').innerHTML=runs.map(v=>'<tr><td>'+esc(v.strategy)+'</td><td>'+esc(v.status)+'</td><td>'+esc(v.trades)+'</td><td class="'+(Number(v.net_profit)<0?'red':'')+'">'+esc(v.net_profit)+'</td><td>'+esc(v.evidence||'รอผลทดสอบ')+'</td></tr>').join('');q('#run-table').innerHTML=runs.map(v=>'<tr>'+[v.id,v.strategy,v.status,v.trades,v.net_profit,v.profit_factor,v.max_dd].map(x=>'<td>'+esc(x)+'</td>').join('')+'</tr>').join('');}
-document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.remove('active'));b.classList.add('active');['overview','runs','monitor','import','architecture'].forEach(s=>q('#'+s).classList.toggle('hidden',s!==b.dataset.tab));}));q('#reload').onclick=loadRuns;loadRuns();
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.remove('active'));b.classList.add('active');['overview','lab','runs','monitor','import','architecture'].forEach(s=>q('#'+s).classList.toggle('hidden',s!==b.dataset.tab));}));q('#reload').onclick=loadRuns;loadRuns();
 let timer=null,price=2650,eq=5000,count=0,series=[];function emit(m){q('#events').textContent='['+new Date().toLocaleTimeString('th-TH')+'] '+m+'\n'+q('#events').textContent.slice(0,4500);}
 function step(){price+=((Math.random()-.5)*.65);eq+=(Math.random()-.49)*1.3;count++;series.push(eq);if(series.length>45)series.shift();q('#px').textContent=price.toFixed(2);q('#equity').textContent='$'+eq.toFixed(2);q('#event-count').textContent=count;q('#feed-state').textContent='MOCK LIVE';q('#feed-state').className='green';if(count%3===0)emit('mock.tick #'+count+' price='+price.toFixed(2)+' equity='+eq.toFixed(2));const min=Math.min(...series)-1,max=Math.max(...series)+1,poly=series.map((x,i)=>(i*680/Math.max(1,series.length-1)).toFixed(1)+','+(190-(x-min)/(max-min)*170).toFixed(1)).join(' ');q('#line-path').setAttribute('d',poly?'M '+poly.replaceAll(' ',' L '):'');}
 q('#start').onclick=()=>{if(timer)return;emit('simulation started');step();timer=setInterval(step,3000)};q('#pause').onclick=()=>{clearInterval(timer);timer=null;q('#feed-state').textContent='PAUSED';q('#feed-state').className='yellow';emit('simulation paused')};q('#reset').onclick=()=>{clearInterval(timer);timer=null;price=2650;eq=5000;count=0;series=[];q('#feed-state').textContent='OFFLINE';q('#feed-state').className='yellow';q('#px').textContent='—';q('#equity').textContent='—';q('#event-count').textContent='0';q('#line-path').setAttribute('d','');q('#events').textContent='[reset] simulation cleared'};
 q('#csv').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;const txt=await f.text();const lines=txt.split(/\r?\n/).filter(Boolean).slice(0,21);const sep=(lines[0]?.split(';').length>lines[0]?.split(',').length)?';':',';const out=lines.map(l=>l.split(sep).slice(0,16));q('#csv-preview').innerHTML='<p>Local Preview: '+esc(f.name)+' (สูงสุด 20 แถวแรก)</p><table>'+out.map((r,i)=>'<tr>'+r.map(c=>(i===0?'<th>':'<td>')+esc(c)+(i===0?'</th>':'</td>')).join('')+'</tr>').join('')+'</table>'});
-</script></body></html>
+</script>
+<script>
+(()=>{
+const $=s=>document.querySelector(s);
+let runs=[],cands=[],current=0;
+const money=x=>(x<0?'−':'')+'</html>+Math.abs(Number(x||0)).toFixed(2);
+const svg=(el,content)=>{el.innerHTML=content};
+function barChart(){
+ const root=$('#lab-bars'),W=640,H=240;
+ let out='<line x1="40" y1="28" x2="40" y2="207" stroke="#374650"/><line x1="40" y1="48" x2="618" y2="48" stroke="#4f6770" stroke-dasharray="4 6"/>';
+ const names=['C1-B','C2','C3-E01'];runs.forEach((r,i)=>{const y=77+i*57,x=150,vol=Math.abs(r.net_profit||0),width=vol/50*390;out+='<text x="28" y="'+(y+17)+'" fill="#b5c7d0" font-size="14">'+names[i]+'</text><rect x="'+x+'" y="'+y+'" width="'+width+'" height="24" fill="'+['#ad727b','#c47d79','#d6a675'][i]+'" rx="5"/><text x="'+Math.min(615,x+width+10)+'" y="'+(y+17)+'" fill="#f3c0c5" text-anchor="'+(x+width>530?'end':'start')+'" font-size="14">'+money(r.net_profit)+'</text>';});
+ out+='<text x="40" y="29" fill="#738b97" font-size="11">0 USD</text>';svg(root,out);}
+function equity(r){const root=$('#lab-equity'),v=r.balance_curve;if(!v?.length){svg(root,'');return;}
+const min=Math.min(...v)-8,max=Math.max(...v)+8,x0=57,y0=26,w=548,h=170;
+const xy=(n,i)=>[(x0+i*w/(v.length-1)).toFixed(1),(y0+(max-n)*h/(max-min)).toFixed(1)];
+let path=v.map((n,i)=>xy(n,i).join(' ')).map((p,i)=>(i?'L':'M')+p).join(' ');
+let grid=[min,(min+max)/2,max].map(n=>{let y=y0+(max-n)*h/(max-min);return '<line x1="'+x0+'" y1="'+y+'" x2="614" y2="'+y+'" stroke="#34434e" stroke-dasharray="3 5"/><text x="4" y="'+(y+4)+'" fill="#9daeb9" font-size="11">'+Math.round(n)+'</text>'}).join('');
+let dots=v.map((n,i)=>{const [x,y]=xy(n,i);return '<circle cx="'+x+'" cy="'+y+'" r="'+(i===v.length-1?5:3.5)+'" fill="'+(i===v.length-1?'#ff8d94':'#70d8b6')+'"/><text x="'+x+'" y="224" fill="#8da6b0" font-size="10" text-anchor="middle">'+(i===0?'Start':i)+'</text>'}).join('');
+svg(root,grid+'<path d="'+path+'" stroke="#73d5b3" stroke-width="3" fill="none"/>'+dots);}
+function flow(r){const root=$('#lab-flow');root.textContent='';r.flow.forEach((it,i)=>{const b=document.createElement('button');b.type='button';b.className='flowtile';const n=document.createElement('span');n.className='no';n.textContent=String(i+1).padStart(2,'0')+' / '+it.name.toUpperCase();const s=document.createElement('b');s.textContent=it.name;const mini=document.createElement('small');mini.textContent=it.summary;b.append(n,s,mini);b.onclick=()=>{root.querySelectorAll('button').forEach(x=>x.style.borderColor='');b.style.borderColor='#58d4b0';$('#lab-detail').textContent=it.detail;};root.appendChild(b)});root.firstChild?.click();}
+function trades(r){const tbody=$('#lab-trades');tbody.textContent='';r.trades.forEach(t=>{const tr=document.createElement('tr');[t.open,t.direction,t.lots,money(t.pnl),money(t.balance),t.exit,money(t.mfe)].forEach((x,i)=>{const td=document.createElement('td');td.textContent=x;if(i===3)td.className=t.pnl<0?'red':'green';tr.appendChild(td);});tbody.appendChild(tr);});}
+function select(i){const r=runs[i];if(!r)return;current=i;document.querySelectorAll('#lab-selectors button').forEach((b,j)=>b.classList.toggle('active',j===i));$('#lab-title').textContent=r.title;$('#lab-pnl').textContent=money(r.net_profit);$('#lab-pnl').className=r.net_profit<0?'red':'green';$('#lab-win').textContent=r.win_rate+'%';$('#lab-count').textContent=r.trade_count;$('#lab-pf').textContent=r.profit_factor.toFixed(2);$('#lab-dd').textContent=money(r.max_closed_balance_dd);$('#lab-insight').textContent=r.subtitle;$('#lab-change').textContent='เปลี่ยน: '+r.change;$('#lab-learn').textContent='ผลที่พบ: '+r.insight;$('#lab-source').textContent='ไฟล์อ้างอิง '+r.source+' / '+r.sqx+'; ทุนจำลอง $5,000; ผล SQX เดือนกันยายน (IST) ไม่ใช่ OOS. Closed Balance DD ไม่ใช่ Floating DD.';flow(r);trades(r);equity(r);}
+function init(d){runs=d.runs||[];cands=d.candidates||[];if(!runs.length)return;const sel=$('#lab-selectors');sel.textContent='';runs.forEach((r,i)=>{const b=document.createElement('button');b.type='button';b.textContent=r.title;b.onclick=()=>select(i);sel.appendChild(b)});const ct=$('#lab-candidates');ct.textContent='';cands.forEach(r=>{const div=document.createElement('div');div.className='labpanel';const name=document.createElement('h3');name.textContent=r.title;const stat=document.createElement('small');stat.textContent='รอ Backtest • ไม่มีผลกำไรที่ยืนยัน';const steps=document.createElement('p');steps.className='labcall';steps.textContent=(r.flow||[]).join(' → ');div.append(name,stat,steps);ct.appendChild(div)});barChart();select(0);}
+async function getData(){try{const r=await fetch('./runs.json?version=3&ts='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('No JSON');const d=await r.json();if(d.schema==='atlas.research-runs.v2'){init(d);return}}catch(err){}$('#lab-title').textContent='ยังโหลดข้อมูล 3 ชุดไม่ได้';$('#lab-insight').textContent='ตรวจว่า runs.json รุ่น v2 เผยแพร่แล้วและเข้าถึงได้จากเว็บไซต์นี้';}
+getData();
+})();
+</script>
+</body></html>
