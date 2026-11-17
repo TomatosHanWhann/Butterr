@@ -19,42 +19,42 @@ details{border:1px solid var(--stroke);border-radius:11px;margin-top:12px;paddin
 @media(max-width:390px){.kpi b{font-size:19px}.step{padding:8px}.panel{padding:12px}}
 </style></head>
 <body><main>
-<header><div class="logo">ATLAS <span>/ EA</span></div><span class="tag">R04 · AUDITED SQX RESULTS</span></header>
-<h1>Strategy Performance</h1><div class="caption">XAUUSDc · กันยายน 2026 · ทุนจำลอง $5,000 · ผล Backtest R04 จำนวน 4 ชุด</div>
+<header><div class="logo">ATLAS <span>/ EA</span></div><span class="tag">R05 · IST REPRODUCTION</span></header>
+<h1>Strategy Performance</h1><div class="caption">XAUUSDc · กันยายน 2026 · ทุนจำลอง $5,000 · ผล R05 จำลองซ้ำ 3 ชุด · ยังไม่ใช่ OOS</div>
 <div class="kpis">
-<div class="kpi"><small>ชุด R04</small><b>4</b><small>IST เดือนเดียว</small></div>
-<div class="kpi"><small>ชุดที่กำไร</small><b class="green">1 / 4</b><small>ยังไม่มี OOS</small></div>
-<div class="kpi"><small>PF สูงสุด</small><b class="green" id="best-pf">1.24</b><small>B3 control · +$24.17</small></div>
-<div class="kpi"><small>DD ปิดสูงสุด</small><b>2.36%</b><small>A4 · Balance DD</small></div>
+<div class="kpi"><small>ชุด R05</small><b>3</b><small>IST เดือนเดียว</small></div>
+<div class="kpi"><small>กำไรบน IST</small><b class="green">1 / 3</b><small>ยังไม่มี OOS</small></div>
+<div class="kpi"><small>PF สูงสุด</small><b class="green" id="best-pf">1.24</b><small>B3 · IST เดิม</small></div>
+<div class="kpi"><small>DD ปิดสูงสุด</small><b class="red">4.22%</b><small>B1 · Balance DD</small></div>
 </div>
-<section class="panel"><div class="headline"><h2>ผล P/L สะสมรายวัน · R04</h2><span class="caption">USD · Closed Balance</span></div><svg id="chart" viewBox="0 0 760 228" aria-label="กราฟกำไรขาดทุนจากการทดสอบ 5 ชุด" role="img"><text x="18" y="28" fill="#a6bac5">กำลังอ่านข้อมูล…</text></svg><div class="legend" id="legend"></div><div class="hint">เส้นกราฟเป็นยอดหลังปิดออเดอร์ ไม่ใช่ Floating Equity · ไม่สามารถนำกำไรของแต่ละชุดมาบวกกันได้</div></section>
+<section class="panel"><div class="headline"><h2>ผล P/L สะสมรายวัน · R05 (IST)</h2><span class="caption">USD · Closed Balance</span></div><svg id="chart" viewBox="0 0 760 228" aria-label="กราฟกำไรขาดทุนจากการทดสอบ 5 ชุด" role="img"><text x="18" y="28" fill="#a6bac5">กำลังอ่านข้อมูล…</text></svg><div class="legend" id="legend"></div><div class="hint">เส้นกราฟเป็นยอดหลังปิดออเดอร์ ไม่ใช่ Floating Equity · ไม่สามารถนำกำไรของแต่ละชุดมาบวกกันได้</div></section>
 <section class="panel">
- <div class="headline"><h2>กลยุทธ์และเงื่อนไข</h2><span class="caption">A2 / A4 / B3 / B3-Q · กด Flow เพื่ออ่าน</span></div>
+ <div class="headline"><h2>กลยุทธ์และเงื่อนไข</h2><span class="caption">B3 / B1 / A2 · กด Flow เพื่ออ่าน</span></div>
  <div class="chips" id="choose"></div>
  <div class="headline"><div><strong id="selected-title">—</strong><div class="caption" id="selected-sub">—</div></div><span class="tag">BACKTEST · IST</span></div>
  <div class="metrics" id="metrics"></div>
  <div class="flow" id="flow"></div><div class="detail" id="detail" hidden></div>
  <div class="insight" id="insight"></div><div class="warning" id="limitations"></div>
 </section>
-<section class="panel"><div class="headline"><h2>สิ่งที่ได้จากผลจริง R04</h2><span class="caption">Exit vs Re-entry</span></div>
-<div class="insight">A4 ลดจาก 43 เหลือ 39 ไม้ แต่ Net P/L แย่ลง $3.61: ตัดออเดอร์ 7 ไม้ (-$2.76) และเกิดใหม่ 3 ไม้ (-$6.37)</div>
-<div class="insight">B3-Q กรอง Breakout ทิ้ง 4 ไม้ซึ่งเดิมรวมกำไร +$24.97 ทำให้ B3 ที่ +$24.17 กลายเป็น −$0.65</div>
-<div class="hint" style="margin-top:10px">ทั้ง A4 และ B3-Q ยังไม่เพิ่มกำไรสุทธิในข้อมูลเดิม · B3 Control ยังไม่มีผล OOS ห้ามเรียก Champion</div>
+<section class="panel"><div class="headline"><h2>ผลตรวจ R05 · Data Gate</h2><span class="caption">Exit vs Re-entry</span></div>
+<div class="insight">B3 +$24.17 จาก 13 ไม้; B1 -$127.70 จาก 27 ไม้; A2 -$38.47 จาก 43 ไม้ — ตัวเลขตรงกับผลเดิมทั้งหมด</div>
+<div class="insight">B3 เก็บ 13 ออเดอร์ที่อยู่ใน B1 เดิมไว้ทั้งหมด; 14 ออเดอร์นอกช่วง 12:00–14:00 รวมขาดทุน $152.05 (เป็นผลเดือนที่ใช้เลือกช่วง)</div>
+<div class="hint" style="margin-top:10px">OOS GATE: BLOCKED · ทุกออเดอร์เป็น IST ของกันยายน 2026; OOS Fitness = 0; ยังไม่มี Floating Equity DD หรือ Cost Stress ที่ตรวจรับรอง</div>
 </section>
-<details><summary>ผล R03 · A3 / B3 / B4</summary><div id="old-r03" class="oldgrid"></div></details><details><summary>ผลเก่า R02 · CONTROL / A1 / A2 / B1 / B2</summary><div id="old-r02" class="oldgrid"></div></details><details><summary>ประวัติก่อน R02 · C1 / C2 / C3</summary><div id="old" class="oldgrid"></div></details>
+<details><summary>ผล R04 · A2 / A4 / B3 / B3-Q</summary><div id="old-r04" class="oldgrid"></div></details><details><summary>ผล R03 · A3 / B3 / B4</summary><div id="old-r03" class="oldgrid"></div></details><details><summary>ผลเก่า R02 · CONTROL / A1 / A2 / B1 / B2</summary><div id="old-r02" class="oldgrid"></div></details><details><summary>ประวัติก่อน R02 · C1 / C2 / C3</summary><div id="old" class="oldgrid"></div></details>
 <div id="status" class="hint" style="margin-top:14px">กำลังโหลดข้อมูลจากแหล่งผลทดลอง…</div>
 </main>
 <script>
 (function(){
 var $=function(id){return document.getElementById(id)};
-var colors=['#81b6df','#dca073','#63dbc0','#d68dca'];
+var colors=['#63dbc0','#dca073','#81b6df'];
 var cash=function(v){return(Number(v)<0?'−':'')+'$'+Math.abs(Number(v)||0).toFixed(2)};
 function el(tag,attrs,parent,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k])});if(txt!==undefined)e.textContent=txt;parent.appendChild(e);return e}
 function graph(runs){
 var root=$('chart');root.textContent='';
-var low=-85,hi=100,x0=49,y0=15,w=679,h=178;
+var low=-150,hi=100,x0=49,y0=15,w=679,h=178;
 function x(i){return x0+i*w/29}function y(v){return y0+(hi-v)*h/(hi-low)}
-[-80,-40,0,40,80].forEach(function(v){el('line',{x1:x0,y1:y(v),x2:735,y2:y(v),stroke:'#34434d','stroke-dasharray':'3 6'},root);el('text',{x:3,y:y(v)+4,fill:'#a5b7c0','font-size':11},root,v)});
+[-150,-100,-50,0,50,100].forEach(function(v){el('line',{x1:x0,y1:y(v),x2:735,y2:y(v),stroke:'#34434d','stroke-dasharray':'3 6'},root);el('text',{x:3,y:y(v)+4,fill:'#a5b7c0','font-size':11},root,v)});
 [1,7,14,21,30].forEach(function(i){el('text',{x:x(i-1),y:218,'text-anchor':'middle',fill:'#a5b7c0','font-size':10},root,i)});
 runs.forEach(function(r,i){if(!Array.isArray(r.daily)||r.daily.length!==30)return;var pts=r.daily.map(function(v,j){return x(j).toFixed(1)+','+y(v).toFixed(1)}).join(' ');el('polyline',{points:pts,fill:'none',stroke:colors[i],'stroke-width':i===1?3:2,'stroke-linejoin':'round'},root);el('circle',{cx:x(29),cy:y(r.daily[29]),r:4,fill:colors[i]},root)});
 var legend=$('legend');legend.textContent='';runs.forEach(function(r,i){var p=document.createElement('span'),marker=document.createElement('i');marker.style.backgroundColor=colors[i];p.appendChild(marker);p.appendChild(document.createTextNode(r.id+' '+cash(r.net)));legend.appendChild(p)})}
@@ -67,13 +67,14 @@ var f=$('flow');f.textContent='';$('detail').hidden=true;
 $('insight').textContent=r.note;
 $('limitations').textContent='ข้อมูล IST เพียงเดือนเดียว · Spread คงที่ 70 / Slippage 10 · Commission ไม่มี · Swap ปิด · DD เป็น Closed Balance ไม่ใช่ Floating Equity';
 }
-function display(d){var runs=d.r04.runs;graph(runs);
-var box=$('choose');box.textContent='';runs.forEach(function(r,i){var b=document.createElement('button');b.type='button';b.textContent=r.id;b.onclick=function(){show(r,b,runs)};box.appendChild(b)});if(runs.length)box.children[2].click();
+function display(d){var runs=d.r05.runs;graph(runs);
+var box=$('choose');box.textContent='';runs.forEach(function(r,i){var b=document.createElement('button');b.type='button';b.textContent=r.id;b.onclick=function(){show(r,b,runs)};box.appendChild(b)});if(runs.length)box.children[0].click();
+var oldR04=$('old-r04');oldR04.textContent='';(d.r04.runs||[]).forEach(function(r){var card=document.createElement('div');card.className='oldrun';var nm=document.createElement('small');nm.textContent=r.label||r.id;var val=document.createElement('b');val.className=r.net>=0?'green':'red';val.textContent=cash(r.net);var meta=document.createElement('small');meta.textContent='PF '+Number(r.pf||0).toFixed(2)+' · '+(r.n||0)+' เทรด';card.append(nm,val,meta);oldR04.appendChild(card)});
 var oldR03=$('old-r03');oldR03.textContent='';(d.r03.runs||[]).forEach(function(r){var card=document.createElement('div');card.className='oldrun';var nm=document.createElement('small');nm.textContent=r.label||r.id;var val=document.createElement('b');val.className=r.net>=0?'green':'red';val.textContent=cash(r.net);var meta=document.createElement('small');meta.textContent='PF '+Number(r.pf||0).toFixed(2)+' · '+(r.n||0)+' เทรด';card.append(nm,val,meta);oldR03.appendChild(card)});
 var oldR02=$('old-r02');oldR02.textContent='';(d.r02.runs||[]).forEach(function(r){var card=document.createElement('div');card.className='oldrun';var nm=document.createElement('small');nm.textContent=r.label||r.id;var val=document.createElement('b');val.className=r.net>=0?'green':'red';val.textContent=cash(r.net);var meta=document.createElement('small');meta.textContent='PF '+Number(r.pf||0).toFixed(2)+' · '+(r.n||0)+' เทรด';card.append(nm,val,meta);oldR02.appendChild(card)});
 var old=$('old');old.textContent='';(d.runs||[]).forEach(function(r){var card=document.createElement('div');card.className='oldrun';var name=document.createElement('small');name.textContent=r.title||r.id;var val=document.createElement('b');val.className='red';val.textContent=cash(r.net_profit);var meta=document.createElement('small');meta.textContent='PF '+Number(r.profit_factor||0).toFixed(2)+' · '+(r.trade_count||r.trades_count||0)+' เทรด';card.append(name,val,meta);old.appendChild(card)});
-$('status').textContent='R04 · 4 Trade Lists / 4 Native SQX · ยืนยันรายการและ Settings แล้ว · '+d.updated_at+' · IST ไม่ใช่ OOS';
+$('status').textContent='R05 · 3 Trade Lists / 3 Native SQX · ตรวจซ้ำ IST สำเร็จ · OOS Data Gate: BLOCKED · '+d.updated_at;
 }
-fetch('./runs.json?v=r04-audited-20261117',{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(function(d){if(!d.r04||d.r04.runs.length!==4)throw Error('Invalid R04 payload');display(d)}).catch(function(err){$('status').textContent='โหลดผล R04 ไม่สำเร็จ: '+err.message+' · กรุณารีเฟรชหน้าเว็บ'});
+fetch('./runs.json?v=r05-ist-only-20261117',{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(function(d){if(!d.r05||d.r05.runs.length!==3)throw Error('Invalid R05 payload');display(d)}).catch(function(err){$('status').textContent='โหลดผล R05 ไม่สำเร็จ: '+err.message+' · กรุณารีเฟรชหน้าเว็บ'});
 })();
 </script></body></html>
