@@ -19,65 +19,60 @@ details{border:1px solid var(--stroke);border-radius:11px;margin-top:12px;paddin
 @media(max-width:390px){.kpi b{font-size:19px}.step{padding:8px}.panel{padding:12px}}
 </style></head>
 <body><main>
-<header><div class="logo">ATLAS <span>/ EA</span></div><span class="tag">R02 · VERIFIED TRADE LIST</span></header>
-<h1>Strategy Performance</h1><div class="caption">XAUUSDc · กันยายน 2026 · ทุนจำลอง $5,000 · ผล Backtest 5 ชุด</div>
+<header><div class="logo">ATLAS <span>/ EA</span></div><span class="tag">R03 · AUDITED SQX RESULTS</span></header>
+<h1>Strategy Performance</h1><div class="caption">XAUUSDc · กันยายน 2026 · ทุนจำลอง $5,000 · ผล Backtest R03 จำนวน 3 ชุด</div>
 <div class="kpis">
-<div class="kpi"><small>รันทดสอบ</small><b>5</b><small>IST เดือนเดียว</small></div>
-<div class="kpi"><small>ชุดที่กำไร</small><b class="red">0 / 5</b><small>ยังไม่มี Champion</small></div>
-<div class="kpi"><small>PF สูงสุด</small><b id="best-pf">0.91</b><small>Candidate A1</small></div>
-<div class="kpi"><small>DD ปิดสูงสุด</small><b class="red">4.22%</b><small>B1 · Balance DD</small></div>
+<div class="kpi"><small>ชุด R03</small><b>3</b><small>IST เดือนเดียว</small></div>
+<div class="kpi"><small>ชุดที่กำไร</small><b class="green">1 / 3</b><small>ยังไม่มี OOS</small></div>
+<div class="kpi"><small>PF สูงสุด</small><b class="green" id="best-pf">1.24</b><small>B3 · +$24.17</small></div>
+<div class="kpi"><small>DD ปิดสูงสุด</small><b>2.20%</b><small>A3 · Balance DD</small></div>
 </div>
-<section class="panel"><div class="headline"><h2>ผลกำไร/ขาดทุนสะสมรายวัน</h2><span class="caption">USD · Closed Balance</span></div><svg id="chart" viewBox="0 0 760 228" aria-label="กราฟกำไรขาดทุนจากการทดสอบ 5 ชุด" role="img"><text x="18" y="28" fill="#a6bac5">กำลังอ่านข้อมูล…</text></svg><div class="legend" id="legend"></div><div class="hint">เส้นกราฟเป็นยอดหลังปิดออเดอร์ ไม่ใช่ Floating Equity · ไม่สามารถนำกำไรของแต่ละชุดมาบวกกันได้</div></section>
+<section class="panel"><div class="headline"><h2>ผล P/L สะสมรายวัน · R03</h2><span class="caption">USD · Closed Balance</span></div><svg id="chart" viewBox="0 0 760 228" aria-label="กราฟกำไรขาดทุนจากการทดสอบ 5 ชุด" role="img"><text x="18" y="28" fill="#a6bac5">กำลังอ่านข้อมูล…</text></svg><div class="legend" id="legend"></div><div class="hint">เส้นกราฟเป็นยอดหลังปิดออเดอร์ ไม่ใช่ Floating Equity · ไม่สามารถนำกำไรของแต่ละชุดมาบวกกันได้</div></section>
 <section class="panel">
- <div class="headline"><h2>กลยุทธ์และเงื่อนไข</h2><span class="caption">เลือกชุด · แตะ Flow เพื่อดูรายละเอียด</span></div>
+ <div class="headline"><h2>กลยุทธ์และเงื่อนไข</h2><span class="caption">A3 / B3 / B4 · กด Flow เพื่ออ่าน</span></div>
  <div class="chips" id="choose"></div>
  <div class="headline"><div><strong id="selected-title">—</strong><div class="caption" id="selected-sub">—</div></div><span class="tag">BACKTEST · IST</span></div>
  <div class="metrics" id="metrics"></div>
  <div class="flow" id="flow"></div><div class="detail" id="detail" hidden></div>
  <div class="insight" id="insight"></div><div class="warning" id="limitations"></div>
 </section>
-<section class="panel"><div class="headline"><h2>ผลที่ต้องใช้ตัดสินรอบถัดไป</h2><span class="caption">Exit vs Re-entry</span></div>
-<div class="insight">A2 ทำให้สัญญาณเดิม 33 ไม้ดีขึ้นจาก −$25.93 เป็น +$8.62 แต่เปิดเพิ่มอีก 10 ไม้ขาดทุนรวม −$47.09 → ผลสุทธิ A2 = −$38.47</div>
-<div class="insight">B2 ทำให้สัญญาณเดิม 27 ไม้ดีขึ้น $62.87 แต่เปิดเพิ่ม 1 ไม้ขาดทุน −$12.59 → ผลสุทธิ B2 = −$77.42</div>
-<div class="hint" style="margin-top:10px">ผลนี้ชี้ว่าการจัดการ Exit กับการเกิด Entry ใหม่มีผลต่อกัน จึงต้องควบคุมสัญญาณจาก Setup เดิมก่อนตัดสินว่า Trailing ช่วยหรือไม่</div>
+<section class="panel"><div class="headline"><h2>สิ่งที่ได้จากผลจริง R03</h2><span class="caption">Exit vs Re-entry</span></div>
+<div class="insight">B3 ปิดกำไร +$24.17 จาก 13 ไม้ (PF 1.24) หลังกรองเวลา 12:00–14:00 แต่ช่วงเวลานี้ถูกเลือกจากผล Sep เดิม จึงยังไม่ใช่ OOS</div>
+<div class="insight">A3 จำกัด 2 เทรด/วันแล้วผลแย่ลงเป็น −$53.70; B4 เหลือ 8 SELL และยังติดลบ −$25.40 แม้ DD ลดลง</div>
+<div class="hint" style="margin-top:10px">B3 ยังขาดหลักฐานข้ามเดือน: หากกำไรจากหนึ่งออเดอร์ประมาณ $25 หายไป ผลรวมเดือนนี้จะติดลบ — ห้ามให้คะแนน Champion จนผ่าน OOS</div>
 </section>
-<details><summary>ประวัติก่อน R02 · C1 / C2 / C3</summary><div id="old" class="oldgrid"></div><div class="hint" style="margin-top:8px">กลุ่มนี้เป็นการแก้และทดสอบฐานเดียวกันในเดือนกันยายน ไม่ใช่ข้อมูลอิสระ</div></details>
+<details><summary>ผลเก่า R02 · CONTROL / A1 / A2 / B1 / B2</summary><div id="old-r02" class="oldgrid"></div></details><details><summary>ประวัติก่อน R02 · C1 / C2 / C3</summary><div id="old" class="oldgrid"></div></details>
 <div id="status" class="hint" style="margin-top:14px">กำลังโหลดข้อมูลจากแหล่งผลทดลอง…</div>
 </main>
 <script>
 (function(){
 var $=function(id){return document.getElementById(id)};
-var colors=['#9fa9b7','#81b6df','#63dbc0','#dca073','#d68dca'];
+var colors=['#81b6df','#63dbc0','#dca073'];
 var cash=function(v){return(Number(v)<0?'−':'')+'$'+Math.abs(Number(v)||0).toFixed(2)};
-var sample=[
-{id:'CONTROL',label:'CONTROL',n:4,w:1,net:-12.93,pf:.657,ddpct:.754,flow:[],daily:Array(30).fill(0)},
-{id:'A1',label:'A1',n:33,w:11,net:-25.93,pf:.905,ddpct:2.487,flow:[],daily:Array(30).fill(0)},
-{id:'A2',label:'A2',n:43,w:16,net:-38.47,pf:.827,ddpct:2.298,flow:[],daily:Array(30).fill(0)},
-{id:'B1',label:'B1',n:27,w:6,net:-127.70,pf:.51,ddpct:4.221,flow:[],daily:Array(30).fill(0)},
-{id:'B2',label:'B2',n:28,w:9,net:-77.42,pf:.612,ddpct:2.76,flow:[],daily:Array(30).fill(0)}];
 function el(tag,attrs,parent,txt){var e=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.keys(attrs).forEach(function(k){e.setAttribute(k,attrs[k])});if(txt!==undefined)e.textContent=txt;parent.appendChild(e);return e}
 function graph(runs){
 var root=$('chart');root.textContent='';
-var low=-150,hi=100,x0=49,y0=15,w=679,h=178;
+var low=-85,hi=100,x0=49,y0=15,w=679,h=178;
 function x(i){return x0+i*w/29}function y(v){return y0+(hi-v)*h/(hi-low)}
-[-150,-100,-50,0,50,100].forEach(function(v){el('line',{x1:x0,y1:y(v),x2:735,y2:y(v),stroke:'#34434d','stroke-dasharray':'3 6'},root);el('text',{x:3,y:y(v)+4,fill:'#a5b7c0','font-size':11},root,v)});
+[-80,-40,0,40,80].forEach(function(v){el('line',{x1:x0,y1:y(v),x2:735,y2:y(v),stroke:'#34434d','stroke-dasharray':'3 6'},root);el('text',{x:3,y:y(v)+4,fill:'#a5b7c0','font-size':11},root,v)});
 [1,7,14,21,30].forEach(function(i){el('text',{x:x(i-1),y:218,'text-anchor':'middle',fill:'#a5b7c0','font-size':10},root,i)});
 runs.forEach(function(r,i){if(!Array.isArray(r.daily)||r.daily.length!==30)return;var pts=r.daily.map(function(v,j){return x(j).toFixed(1)+','+y(v).toFixed(1)}).join(' ');el('polyline',{points:pts,fill:'none',stroke:colors[i],'stroke-width':i===1?3:2,'stroke-linejoin':'round'},root);el('circle',{cx:x(29),cy:y(r.daily[29]),r:4,fill:colors[i]},root)});
 var legend=$('legend');legend.textContent='';runs.forEach(function(r,i){var p=document.createElement('span'),marker=document.createElement('i');marker.style.backgroundColor=colors[i];p.appendChild(marker);p.appendChild(document.createTextNode(r.id+' '+cash(r.net)));legend.appendChild(p)})}
 function show(r,button,all){
 Array.prototype.forEach.call($('choose').children,function(b){b.classList.toggle('active',b===button)});
 $('selected-title').textContent=r.label;$('selected-sub').textContent=r.source+' · '+r.sqx;
-var m=$('metrics');m.textContent='';[['NET',cash(r.net)],['WIN RATE',(r.w/r.n*100).toFixed(1)+'%'],['PF',r.pf.toFixed(2)],['TRADES',r.n],['CLOSED DD',r.ddpct.toFixed(2)+'%']].forEach(function(pair){var d=document.createElement('div'),s=document.createElement('small'),b=document.createElement('b');s.textContent=pair[0];b.textContent=pair[1];if(pair[0]==='NET')b.className='red';if(pair[0]==='CLOSED DD'&&r.ddpct>3)b.className='red';d.appendChild(b);d.appendChild(s);m.appendChild(d)});
+var m=$('metrics');m.textContent='';[['NET',cash(r.net)],['WIN RATE',(r.w/r.n*100).toFixed(1)+'%'],['PF',r.pf.toFixed(2)],['TRADES',r.n],['CLOSED DD',r.ddpct.toFixed(2)+'%']].forEach(function(pair){var d=document.createElement('div'),s=document.createElement('small'),b=document.createElement('b');s.textContent=pair[0];b.textContent=pair[1];if(pair[0]==='NET')b.className=r.net>=0?'green':'red';if(pair[0]==='CLOSED DD'&&r.ddpct>3)b.className='red';d.appendChild(b);d.appendChild(s);m.appendChild(d)});
 var f=$('flow');f.textContent='';$('detail').hidden=true;
 (r.flow||[]).forEach(function(step,i){var btn=document.createElement('button');btn.className='step';btn.type='button';var no=document.createElement('em');no.textContent=('0'+(i+1)).slice(-2);var title=document.createElement('b');title.textContent=step[0];var sm=document.createElement('small');sm.textContent=step[1];btn.append(no,title,sm);btn.onclick=function(){if(btn.classList.contains('active')){btn.classList.remove('active');$('detail').hidden=true;return}Array.prototype.forEach.call(f.children,function(x){x.classList.remove('active')});btn.classList.add('active');$('detail').textContent=step[2];$('detail').hidden=false};f.appendChild(btn)});
 $('insight').textContent=r.note;
 $('limitations').textContent='ข้อมูล IST เพียงเดือนเดียว · Spread คงที่ 70 / Slippage 10 · Commission ไม่มี · Swap ปิด · DD เป็น Closed Balance ไม่ใช่ Floating Equity';
 }
-function display(d){var runs=d.r02.runs;graph(runs);
+function display(d){var runs=d.r03.runs;graph(runs);
 var box=$('choose');box.textContent='';runs.forEach(function(r,i){var b=document.createElement('button');b.type='button';b.textContent=r.id;b.onclick=function(){show(r,b,runs)};box.appendChild(b)});if(runs.length)box.children[1].click();
+var oldR02=$('old-r02');oldR02.textContent='';(d.r02.runs||[]).forEach(function(r){var card=document.createElement('div');card.className='oldrun';var nm=document.createElement('small');nm.textContent=r.label||r.id;var val=document.createElement('b');val.className=r.net>=0?'green':'red';val.textContent=cash(r.net);var meta=document.createElement('small');meta.textContent='PF '+Number(r.pf||0).toFixed(2)+' · '+(r.n||0)+' เทรด';card.append(nm,val,meta);oldR02.appendChild(card)});
 var old=$('old');old.textContent='';(d.runs||[]).forEach(function(r){var card=document.createElement('div');card.className='oldrun';var name=document.createElement('small');name.textContent=r.title||r.id;var val=document.createElement('b');val.className='red';val.textContent=cash(r.net_profit);var meta=document.createElement('small');meta.textContent='PF '+Number(r.profit_factor||0).toFixed(2)+' · '+(r.trade_count||r.trades_count||0)+' เทรด';card.append(name,val,meta);old.appendChild(card)});
-$('status').textContent='อัปเดตผลจาก SQX Trade List · '+d.updated_at+' · R02 ผ่านการกระทบยอดรายการ / ไม่ผ่าน OOS';
+$('status').textContent='R03 · Trade List และ Native SQX Trading Options ตรวจแล้ว · '+d.updated_at+' · In-sample ไม่ใช่ OOS';
 }
-fetch('./runs.json?v=r02-verified-20261117',{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(function(d){if(!d.r02||d.r02.runs.length!==5)throw Error('Invalid R02 payload');display(d)}).catch(function(err){$('status').textContent='ไม่สามารถโหลดผลทดลองล่าสุด: '+err.message+' · กรุณารีเฟรชหน้าเว็บ'});
+fetch('./runs.json?v=r03-audited-20261117',{cache:'no-store'}).then(function(r){if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(function(d){if(!d.r03||d.r03.runs.length!==3)throw Error('Invalid R03 payload');display(d)}).catch(function(err){$('status').textContent='โหลดผล R03 ไม่สำเร็จ: '+err.message+' · กรุณารีเฟรชหน้าเว็บ'});
 })();
 </script></body></html>
