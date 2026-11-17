@@ -1862,5 +1862,570 @@
     ],
     "result": "No champion selection; data gate blocks R05 OOS scoring; need independent Exness history and actual floating equity DD plus realistic costs.",
     "note": "Balance DD percentages use DD in USD divided by initial 5000, for continuity with R02/R04. Peaks-based DD percentages are slightly different."
+  },
+  "integrated": {
+    "label": "ATLAS Integrated One Batch",
+    "source": "TradelistExport6.zip · 6 XLSX and 6 SQX user files",
+    "sample": "IST 2026-09; 0 independent OOS months",
+    "data": {
+      "symbol": "XAUUSDc_EXNESS_202609_M1_AUDIT",
+      "time_zone": "Etc/UTC",
+      "from": "2026-09-01",
+      "to": "2026-09-30",
+      "initial_balance": 5000,
+      "spread": 70,
+      "slippage": 10,
+      "commission": "None",
+      "swap": "Off",
+      "risk_percent_nominal": 0.25,
+      "max_lots": 1,
+      "tickValueInMoney_meta": 0,
+      "equity_dd_confirmed": false
+    },
+    "runs": [
+      {
+        "id": "01",
+        "label": "01 · B3 M15",
+        "n": 13,
+        "w": 5,
+        "l": 8,
+        "net": 24.17,
+        "pf": 1.24019,
+        "dd": 50.39,
+        "ddpct": 1.008,
+        "end_balance": 5024.17,
+        "daily": [
+          0,
+          24.88,
+          74.56,
+          62.11,
+          62.11,
+          62.11,
+          62.11,
+          49.58,
+          37.04,
+          62.16,
+          36.84,
+          36.84,
+          36.84,
+          24.29,
+          24.29,
+          24.29,
+          24.29,
+          36.79,
+          36.79,
+          36.79,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17
+        ],
+        "source": "TradelistExport1.xlsx",
+        "sqx": "01_B3_SESSION_CONTROL.sqx",
+        "flow": [
+          [
+            "M30 Breakout",
+            "12-bar High / Low",
+            "M30 Close[1] ทะลุ 12-bar range; Close[2] ไม่ทะลุ"
+          ],
+          [
+            "M15 Momentum",
+            "Closed-bar confirm",
+            "ใช้ Main Chart M15 ปิดยืนยันตามทิศทาง"
+          ],
+          [
+            "Entry Window",
+            "12:00–14:00 UTC data clock",
+            "Trading Options LimitTimeRange 12:00–14:00; ไม่ใช่เวลาไทย"
+          ],
+          [
+            "Risk",
+            "0.25% nominal",
+            "SQX RiskFixedPctOfAccount 0.25%, MaxLots 1; ไม่ยืนยัน min-lot fail-closed"
+          ],
+          [
+            "Exit",
+            "SL 2 ATR / TP 4 ATR",
+            "SL 2 ATR / TP 4 ATR; ไม่บังคับปิดสิ้น Session"
+          ]
+        ],
+        "note": "B3 13 orders on September IST; 18h24m maximum hold without session exit",
+        "source_is": "IST",
+        "hold_median_min": 43,
+        "hold_max_min": 1104,
+        "hold_le30": 3,
+        "min_close_to_open_min": 10
+      },
+      {
+        "id": "04",
+        "label": "04 · M15 + Setup Latch",
+        "n": 13,
+        "w": 5,
+        "l": 8,
+        "net": 24.17,
+        "pf": 1.24019,
+        "dd": 50.39,
+        "ddpct": 1.008,
+        "end_balance": 5024.17,
+        "daily": [
+          0,
+          24.88,
+          74.56,
+          62.11,
+          62.11,
+          62.11,
+          62.11,
+          49.58,
+          37.04,
+          62.16,
+          36.84,
+          36.84,
+          36.84,
+          24.29,
+          24.29,
+          24.29,
+          24.29,
+          36.79,
+          36.79,
+          36.79,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17
+        ],
+        "source": "TradelistExport2.xlsx",
+        "sqx": "04_B3_SETUP_LATCH_EXPERIMENT.sqx",
+        "flow": [
+          [
+            "M30 Breakout",
+            "12-bar High / Low",
+            "M30 Close[1] ทะลุ 12-bar range; Close[2] ไม่ทะลุ"
+          ],
+          [
+            "M15 Momentum",
+            "Closed-bar confirm",
+            "ใช้ Main Chart M15 ปิดยืนยันตามทิศทาง"
+          ],
+          [
+            "Entry Window",
+            "12:00–14:00 UTC data clock",
+            "Trading Options LimitTimeRange 12:00–14:00; ไม่ใช่เวลาไทย"
+          ],
+          [
+            "Setup Latch",
+            "Consumed variables",
+            "มี BuyBreakoutConsumed และ SellBreakoutConsumed แต่ยังไม่เกิดผลต่างในรายการเทรดที่ทดสอบ"
+          ],
+          [
+            "Risk",
+            "0.25% nominal",
+            "SQX RiskFixedPctOfAccount 0.25%, MaxLots 1; ไม่ยืนยัน min-lot fail-closed"
+          ],
+          [
+            "Exit",
+            "SL 2 ATR / TP 4 ATR",
+            "SL 2 ATR / TP 4 ATR; ไม่บังคับปิดสิ้น Session"
+          ]
+        ],
+        "note": "All 13 trade records exactly match 01; no observed effectiveness from latch",
+        "source_is": "IST",
+        "hold_median_min": 43,
+        "hold_max_min": 1104,
+        "hold_le30": 3,
+        "min_close_to_open_min": 10
+      },
+      {
+        "id": "05",
+        "label": "05 · M15 Exit 14:00",
+        "n": 13,
+        "w": 7,
+        "l": 6,
+        "net": 34.53,
+        "pf": 1.53701,
+        "dd": 37.52,
+        "ddpct": 0.75,
+        "end_balance": 5024.17,
+        "daily": [
+          0,
+          28.54,
+          53.51,
+          41.06,
+          41.06,
+          41.06,
+          41.06,
+          28.53,
+          15.99,
+          40.77,
+          33.25,
+          33.25,
+          33.25,
+          31.76,
+          31.76,
+          31.76,
+          41.82,
+          47.16,
+          47.16,
+          47.16,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53
+        ],
+        "source": "TradelistExport3.xlsx",
+        "sqx": "05_B3_EXIT_AT_14_EXPERIMENT.sqx",
+        "flow": [
+          [
+            "M30 Breakout",
+            "12-bar High / Low",
+            "M30 Close[1] ทะลุ 12-bar range; Close[2] ไม่ทะลุ"
+          ],
+          [
+            "M15 Momentum",
+            "Closed-bar confirm",
+            "ใช้ Main Chart M15 ปิดยืนยันตามทิศทาง"
+          ],
+          [
+            "Entry Window",
+            "12:00–14:00 UTC data clock",
+            "Trading Options LimitTimeRange 12:00–14:00; ไม่ใช่เวลาไทย"
+          ],
+          [
+            "Risk",
+            "0.25% nominal",
+            "SQX RiskFixedPctOfAccount 0.25%, MaxLots 1; ไม่ยืนยัน min-lot fail-closed"
+          ],
+          [
+            "Exit",
+            "14:00 End Of Range",
+            "SL 2 ATR / TP 4 ATR; บังคับปิด 14:00 ใน SQX"
+          ]
+        ],
+        "note": "Same M15 opens as 01, exit14 improves net +$10.36; 5 End Of Range exits",
+        "source_is": "IST",
+        "hold_median_min": 42,
+        "hold_max_min": 120,
+        "hold_le30": 4,
+        "min_close_to_open_min": 10
+      },
+      {
+        "id": "07",
+        "label": "07 · M5 No Session Exit",
+        "n": 17,
+        "w": 6,
+        "l": 11,
+        "net": 7.9,
+        "pf": 1.06104,
+        "dd": 69.29,
+        "ddpct": 1.386,
+        "end_balance": 5024.17,
+        "daily": [
+          12.32,
+          59.39,
+          77.19,
+          64.67,
+          64.67,
+          64.67,
+          64.67,
+          52.46,
+          28.81,
+          51.99,
+          30.73,
+          30.73,
+          30.73,
+          18.06,
+          18.06,
+          18.06,
+          42.43,
+          29.84,
+          29.84,
+          29.84,
+          20.5,
+          20.5,
+          20.5,
+          20.5,
+          20.5,
+          20.5,
+          20.5,
+          20.5,
+          20.5,
+          7.9
+        ],
+        "source": "TradelistExport4.xlsx",
+        "sqx": "07_B3_M5_EXPERIMENT.sqx",
+        "flow": [
+          [
+            "M30 Breakout",
+            "12-bar High / Low",
+            "M30 Close[1] ทะลุ 12-bar range; Close[2] ไม่ทะลุ"
+          ],
+          [
+            "M5 Momentum",
+            "Closed-bar confirm",
+            "ใช้ Main Chart M5 ปิดยืนยันตามทิศทาง"
+          ],
+          [
+            "Entry Window",
+            "12:00–14:00 UTC data clock",
+            "Trading Options LimitTimeRange 12:00–14:00; ไม่ใช่เวลาไทย"
+          ],
+          [
+            "Risk",
+            "0.25% nominal",
+            "SQX RiskFixedPctOfAccount 0.25%, MaxLots 1; ไม่ยืนยัน min-lot fail-closed"
+          ],
+          [
+            "Exit",
+            "SL 2 ATR / TP 4 ATR",
+            "SL 2 ATR / TP 4 ATR; ไม่บังคับปิดสิ้น Session"
+          ]
+        ],
+        "note": "17 M5 entries, 1-minute close-to-next-open gap; PF1.06",
+        "source_is": "IST",
+        "hold_median_min": 30,
+        "hold_max_min": 233,
+        "hold_le30": 9,
+        "min_close_to_open_min": 1
+      },
+      {
+        "id": "08",
+        "label": "08 · M15 Exit14 + Latch",
+        "n": 13,
+        "w": 7,
+        "l": 6,
+        "net": 34.53,
+        "pf": 1.53701,
+        "dd": 37.52,
+        "ddpct": 0.75,
+        "end_balance": 5024.17,
+        "daily": [
+          0,
+          28.54,
+          53.51,
+          41.06,
+          41.06,
+          41.06,
+          41.06,
+          28.53,
+          15.99,
+          40.77,
+          33.25,
+          33.25,
+          33.25,
+          31.76,
+          31.76,
+          31.76,
+          41.82,
+          47.16,
+          47.16,
+          47.16,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53,
+          34.53
+        ],
+        "source": "TradelistExport5.xlsx",
+        "sqx": "08_B3_EXIT14_PLUS_SETUP_LATCH_NEW.sqx",
+        "flow": [
+          [
+            "M30 Breakout",
+            "12-bar High / Low",
+            "M30 Close[1] ทะลุ 12-bar range; Close[2] ไม่ทะลุ"
+          ],
+          [
+            "M15 Momentum",
+            "Closed-bar confirm",
+            "ใช้ Main Chart M15 ปิดยืนยันตามทิศทาง"
+          ],
+          [
+            "Entry Window",
+            "12:00–14:00 UTC data clock",
+            "Trading Options LimitTimeRange 12:00–14:00; ไม่ใช่เวลาไทย"
+          ],
+          [
+            "Setup Latch",
+            "Consumed variables",
+            "มี BuyBreakoutConsumed และ SellBreakoutConsumed แต่ยังไม่เกิดผลต่างในรายการเทรดที่ทดสอบ"
+          ],
+          [
+            "Risk",
+            "0.25% nominal",
+            "SQX RiskFixedPctOfAccount 0.25%, MaxLots 1; ไม่ยืนยัน min-lot fail-closed"
+          ],
+          [
+            "Exit",
+            "14:00 End Of Range",
+            "SL 2 ATR / TP 4 ATR; บังคับปิด 14:00 ใน SQX"
+          ]
+        ],
+        "note": "Trade list exactly identical to 05; latch unproven on this sample",
+        "source_is": "IST",
+        "hold_median_min": 42,
+        "hold_max_min": 120,
+        "hold_le30": 4,
+        "min_close_to_open_min": 10
+      },
+      {
+        "id": "09",
+        "label": "09 · M5 + Exit14",
+        "n": 17,
+        "w": 8,
+        "l": 9,
+        "net": 61.04,
+        "pf": 1.61688,
+        "dd": 42.95,
+        "ddpct": 0.859,
+        "end_balance": 5024.17,
+        "daily": [
+          12.32,
+          57.73,
+          75.53,
+          63.01,
+          63.01,
+          63.01,
+          63.01,
+          50.8,
+          32.58,
+          55.76,
+          53.48,
+          53.48,
+          53.48,
+          40.82,
+          40.82,
+          40.82,
+          65.18,
+          83.13,
+          83.13,
+          83.13,
+          73.78,
+          73.78,
+          73.78,
+          73.78,
+          73.78,
+          73.78,
+          73.78,
+          73.78,
+          73.78,
+          61.03
+        ],
+        "source": "TradelistExport6.xlsx",
+        "sqx": "09_B3_M5_PLUS_EXIT14_NEW.sqx",
+        "flow": [
+          [
+            "M30 Breakout",
+            "12-bar High / Low",
+            "M30 Close[1] ทะลุ 12-bar range; Close[2] ไม่ทะลุ"
+          ],
+          [
+            "M5 Momentum",
+            "Closed-bar confirm",
+            "ใช้ Main Chart M5 ปิดยืนยันตามทิศทาง"
+          ],
+          [
+            "Entry Window",
+            "12:00–14:00 UTC data clock",
+            "Trading Options LimitTimeRange 12:00–14:00; ไม่ใช่เวลาไทย"
+          ],
+          [
+            "Risk",
+            "0.25% nominal",
+            "SQX RiskFixedPctOfAccount 0.25%, MaxLots 1; ไม่ยืนยัน min-lot fail-closed"
+          ],
+          [
+            "Exit",
+            "14:00 End Of Range",
+            "SL 2 ATR / TP 4 ATR; บังคับปิด 14:00 ใน SQX"
+          ]
+        ],
+        "note": "Best on September IST (+$61.04/PF1.62). Open times/sides/prices match 07, two lot sizes changed by +0.01; still 1-minute close-to-open gap",
+        "source_is": "IST",
+        "hold_median_min": 27,
+        "hold_max_min": 86,
+        "hold_le30": 11,
+        "min_close_to_open_min": 1
+      }
+    ],
+    "pairs": {
+      "latch_01_04": {
+        "identical_trades": 13,
+        "total": 13,
+        "delta_net": 0
+      },
+      "latch_05_08": {
+        "identical_trades": 13,
+        "total": 13,
+        "delta_net": 0
+      },
+      "exit_m15": {
+        "control": "01",
+        "variant": "05",
+        "same_open_signals": 13,
+        "delta_net": 10.36
+      },
+      "exit_m5": {
+        "control": "07",
+        "variant": "09",
+        "same_entry_timestamps_side_price": 17,
+        "delta_net": 53.14,
+        "lot_increment_changed": [
+          15,
+          17
+        ],
+        "exit_pnl_changes": [
+          {
+            "ticket": 4,
+            "delta": -1.66
+          },
+          {
+            "ticket": 9,
+            "delta": 5.43
+          },
+          {
+            "ticket": 12,
+            "delta": 18.98
+          },
+          {
+            "ticket": 15,
+            "delta": 30.54
+          },
+          {
+            "ticket": 17,
+            "delta": -0.15
+          }
+        ]
+      }
+    },
+    "decision": "09 provisional research lead; 07 M5 control, 05 M15 comparison. No champion; MUST OOS validate and full risk/real cost tests.",
+    "issues": [
+      "September IST is same reused development dataset; potential selection bias",
+      "09 shortest close-to-next-open gap 1 minute; no proven setup fingerprint guard",
+      "Latch variants showed no effect on trade list, not proof of safety",
+      "Floating-equity DD and cent account fail-closed sizing not verified",
+      "Two trades have +0.01 position-size differences in 09 vs 07",
+      "Instrument metadata tickValueInMoney=0; execution assumptions need verification"
+    ]
   }
 }
