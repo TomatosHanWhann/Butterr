@@ -1590,5 +1590,277 @@
       "risk_limitations": "No floating equity DD, genuine OOS, independent realistic costs or broker forward validation supplied"
     },
     "decision": "Both new filters fail to improve September closed net P/L, but no claim that either universally fails on unseen data."
+  },
+  "r05": {
+    "label": "ATLAS GOLD R05 — Frozen-controls reproduction, NOT OOS",
+    "date": "2026-11-17",
+    "status": "OOS_DATA_GATE_BLOCKED",
+    "evidence_grade": "Reproduced on prior in-sample month; no new independent performance evidence",
+    "sources": {
+      "B3": "TradelistExport111.xlsx / 01_B3_FROZEN.sqx",
+      "B1": "TradelistExport222.xlsx / 02_B1_BROAD_CONTROL.sqx",
+      "A2": "TradelistExport333.xlsx / 03_A2_PULLBACK_CONTROL.sqx"
+    },
+    "data": {
+      "symbol": "XAUUSDc_EXNESS_202609_M1_AUDIT",
+      "from": "2026-09-01",
+      "to": "2026-09-30",
+      "sample": "IST ONLY",
+      "OOSFitness": 0,
+      "baseline_equity": 5000,
+      "precision": "2",
+      "spread": 70,
+      "slippage": 10,
+      "commission": "None",
+      "swap": "Off",
+      "timeframes": "M15 primary / M30 + H1",
+      "risk_nominal_pct": 0.25,
+      "risk_control": "AllowAllTrades",
+      "floating_equity_dd_verified": false,
+      "real_tick_costs_verified": false
+    },
+    "qa": {
+      "trade_lists": "All trade P/L sums reconcile to final Balance",
+      "R05_vs_previous": "B3 13 +24.17 unchanged; B1 27 -127.70 unchanged; A2 43 -38.47 unchanged",
+      "native_strategy": "B3 and B1 Rules XML SHA256 exactly equal. Session only: B3 43200-50400 (12:00-14:00 data clock), B1 43200-72000 (12:00-20:00). A2 different native rule family.",
+      "subset": "All 13 B3 open time/side/open price combinations are present among B1 27. B1's 14 excluded trades sum -152.05.",
+      "sample": "Every trade row Sample type IST; all lastSettings.xml dateFrom 2026.09.01, dateTo 2026.09.30; Results fitness OOS=0.0",
+      "discrepancy": "Frozen SQX description notes older R04 provenance, but current result files include cached Sept 2026 orders/results; provenance does not imply OOS."
+    },
+    "runs": [
+      {
+        "id": "B3",
+        "label": "B3 · Frozen Session 12–14",
+        "n": 13,
+        "w": 5,
+        "l": 8,
+        "net": 24.17,
+        "pf": 1.24019,
+        "dd": 50.39,
+        "ddpct": 1.008,
+        "end_balance": 5024.17,
+        "daily": [
+          0,
+          24.88,
+          74.56,
+          62.11,
+          62.11,
+          62.11,
+          62.11,
+          49.58,
+          37.04,
+          62.16,
+          36.84,
+          36.84,
+          36.84,
+          24.29,
+          24.29,
+          24.29,
+          24.29,
+          36.79,
+          36.79,
+          36.79,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17
+        ],
+        "source": "TradelistExport111.xlsx",
+        "sqx": "01_B3_FROZEN.sqx",
+        "flow": [
+          [
+            "M30 Range",
+            "12-bar Breakout",
+            "Close[1] ทะลุ Highest/Lowest 12 แท่ง M30; Close[2] ไม่ทะลุ"
+          ],
+          [
+            "M15 Confirm",
+            "Momentum Close",
+            "แท่ง M15 ปิดตามทิศทาง Breakout"
+          ],
+          [
+            "Session",
+            "12:00–14:00",
+            "LimitTimeRange ใน SQX เปิดจริง; เวลาตาม Data Clock ไม่ใช่เวลาไทย"
+          ],
+          [
+            "Risk",
+            "0.25%",
+            "RiskFixedPctOfAccount, Volume decimals 2; ตรวจ SL risk จริงยังไม่ครบ"
+          ],
+          [
+            "Exit",
+            "2 ATR / 4 ATR",
+            "SL 2×ATR14, TP 4×ATR14; ไม่มี BE/Trailing"
+          ]
+        ],
+        "note": "R05: IST กันยายน 2026 เท่านั้น, ยอด +$24.17 จาก 13 ไม้ ตรงกับ R03/R04. Sample=IST ทุกไม้, OOS Fitness=0; ไม่ใช่กำไรจากข้อมูลใหม่",
+        "source_is": "IST"
+      },
+      {
+        "id": "B1",
+        "label": "B1 · Broad Session 12–20",
+        "source": "TradelistExport222.xlsx",
+        "sqx": "02_B1_BROAD_CONTROL.sqx",
+        "n": 27,
+        "w": 6,
+        "l": 21,
+        "net": -127.7,
+        "pf": 0.50981,
+        "wr": 22.222,
+        "dd": 211.03,
+        "ddpct": 4.221,
+        "endBalance": 4872.3,
+        "exits": {
+          "PT": 5,
+          "SL": 21,
+          "EndTest": 1
+        },
+        "flow": [
+          [
+            "M30 Range",
+            "Highest/Lowest 12",
+            "ปิดทะลุกรอบ 12 แท่ง M30 พร้อมเงื่อนไข first close"
+          ],
+          [
+            "M15 Momentum",
+            "Close confirmation",
+            "แท่ง M15 ปิดมี Momentum ทิศทางเดียวกับ Breakout"
+          ],
+          [
+            "Time Gate",
+            "12:00–20:00",
+            "ใช้ SQX test trading options LimitTimeRange 12:00–20:00 ตามนาฬิกาข้อมูล UTC; No Session เป็นการตั้งค่า session อื่น ไม่ได้ปิด TimeRange"
+          ],
+          [
+            "Risk",
+            "0.25% · ATR14",
+            "SL 2×ATR14 และกำหนด Lot ตามแผน"
+          ],
+          [
+            "Exit",
+            "2ATR SL · 4ATR TP",
+            "เวอร์ชัน Fixed Exit ไม่มี BE/Trailing"
+          ]
+        ],
+        "daily": [
+          0,
+          24.88,
+          62.03,
+          49.58,
+          49.58,
+          49.58,
+          49.58,
+          37.05,
+          11.96,
+          36.73,
+          -0.71,
+          -0.71,
+          -0.71,
+          -13.26,
+          -38.19,
+          -38.19,
+          -50.43,
+          -50.58,
+          -50.58,
+          -50.58,
+          -62.89,
+          -62.89,
+          -75.24,
+          -87.46,
+          -99.8,
+          -99.8,
+          -99.8,
+          -112.04,
+          -136.47,
+          -127.7
+        ],
+        "note": "R05: IST กันยายน 2026 เท่านั้น, ยอด -$127.70 จาก 27 ไม้ ตรงกับ R02; 14 ไม้ที่ B3 ตัดออกขาดทุนรวม $152.05",
+        "source_is": "IST"
+      },
+      {
+        "id": "A2",
+        "label": "A2 · Pullback ATR Exit",
+        "n": 43,
+        "w": 16,
+        "l": 27,
+        "net": -38.47,
+        "pf": 0.82681,
+        "dd": 114.91,
+        "ddpct": 2.298,
+        "end_balance": 4961.53,
+        "daily": [
+          0,
+          -12.4,
+          -12.4,
+          -32.92,
+          -32.92,
+          -32.92,
+          -34.17,
+          -46.55,
+          -46.55,
+          -21.85,
+          -9.21,
+          -9.21,
+          -9.21,
+          15.32,
+          15.07,
+          12.08,
+          -12.87,
+          -12.87,
+          -12.87,
+          -12.87,
+          -37.71,
+          -74.64,
+          -65.33,
+          -51.16,
+          -63.33,
+          -63.33,
+          -63.33,
+          -29.13,
+          -41.78,
+          -38.47
+        ],
+        "source": "TradelistExport333.xlsx",
+        "sqx": "03_A2_PULLBACK_CONTROL.sqx",
+        "flow": [
+          [
+            "H1 Trend",
+            "EMA50/200",
+            "EMA50≥EMA200 + slope ขึ้นสำหรับ BUY, ตรงข้ามสำหรับ SELL"
+          ],
+          [
+            "M15 Pullback",
+            "EMA20 reclaim",
+            "Close[2] ฝั่งตรงข้าม EMA20, Close[1] ข้าม EMA20 กลับตามเทรนด์"
+          ],
+          [
+            "Signal",
+            "Closed-bar",
+            "Momentum Close[1] เทียบ Close[2], ต้อง Flat"
+          ],
+          [
+            "Risk",
+            "0.25%",
+            "RiskFixedPctOfAccount + Volume decimals 2; min-lot fail-closed ยังไม่พิสูจน์"
+          ],
+          [
+            "Exit",
+            "BE+1 / Trail+1.5",
+            "SL 2×ATR14, TP 4×ATR14; Breakeven เมื่อกำไร +1 ATR, Trailing 1 ATR เริ่ม +1.5 ATR"
+          ]
+        ],
+        "note": "R05: IST กันยายน 2026 เท่านั้น, ยอด -$38.47 จาก 43 ไม้ ตรงกับ R02/R04; มี SELL 37, BUY 6 และบางออเดอร์ค้างข้ามวัน",
+        "source_is": "IST"
+      }
+    ],
+    "result": "No champion selection; data gate blocks R05 OOS scoring; need independent Exness history and actual floating equity DD plus realistic costs.",
+    "note": "Balance DD percentages use DD in USD divided by initial 5000, for continuity with R02/R04. Peaks-based DD percentages are slightly different."
   }
 }
