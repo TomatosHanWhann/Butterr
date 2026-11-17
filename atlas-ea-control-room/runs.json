@@ -1228,5 +1228,367 @@
       "next_validation": "Untouched multi-month OOS with consistent realistic execution costs and floating DD; no extra fitting of session window to Sep 2026",
       "caution": "B3 time window was selected based on September results, so September positive is discovery, not independent confirmation."
     }
+  },
+  "r04": {
+    "label": "ATLAS Gold R04 | Verified native SQX trials",
+    "status": "IST_ONLY_NO_OOS",
+    "date": "2026-11-17",
+    "period": "2026-09-01 to 2026-09-30",
+    "capital": 5000,
+    "engine": "StrategyQuant X Pro Build 145",
+    "source": "User-uploaded 4 SQX ZIPs with native XML & results + 4 XLSX trade lists, matched by strategy settings, rules and order streams",
+    "data": "XAUUSDc_EXNESS_202609_M1_AUDIT",
+    "assumptions": {
+      "spread": 70,
+      "slippage": 10,
+      "commission": "None",
+      "swap": "Off",
+      "nominal_risk_pct": 0.25,
+      "dd_kind": "Max CLOSED balance peak-to-trough (not equity / floating)"
+    },
+    "runs": [
+      {
+        "id": "A2",
+        "label": "A2 Control · Pullback ATR Exit",
+        "n": 43,
+        "w": 16,
+        "l": 27,
+        "net": -38.47,
+        "pf": 0.827,
+        "dd": 114.91,
+        "ddpct": 2.298,
+        "end_balance": 4961.53,
+        "daily": [
+          0,
+          -12.4,
+          -12.4,
+          -32.92,
+          -32.92,
+          -32.92,
+          -34.17,
+          -46.55,
+          -46.55,
+          -21.85,
+          -9.21,
+          -9.21,
+          -9.21,
+          15.32,
+          15.07,
+          12.08,
+          -12.87,
+          -12.87,
+          -12.87,
+          -12.87,
+          -37.71,
+          -74.64,
+          -65.33,
+          -51.16,
+          -63.33,
+          -63.33,
+          -63.33,
+          -29.13,
+          -41.78,
+          -38.47
+        ],
+        "source": "TradelistExport2.xlsx",
+        "sqx": "R04_CONTROL_A2_LOCKED.sqx",
+        "flow": [
+          [
+            "H1 Trend",
+            "EMA50/200",
+            "EMA50≥EMA200 + slope ขึ้นสำหรับ BUY, ตรงข้ามสำหรับ SELL"
+          ],
+          [
+            "M15 Pullback",
+            "EMA20 reclaim",
+            "Close[2] ฝั่งตรงข้าม EMA20, Close[1] ข้าม EMA20 กลับตามเทรนด์"
+          ],
+          [
+            "Signal",
+            "Closed-bar",
+            "Momentum Close[1] เทียบ Close[2], ต้อง Flat"
+          ],
+          [
+            "Risk",
+            "0.25%",
+            "RiskFixedPctOfAccount + Volume decimals 2; min-lot fail-closed ยังไม่พิสูจน์"
+          ],
+          [
+            "Exit",
+            "BE+1 / Trail+1.5",
+            "SL 2×ATR14, TP 4×ATR14; Breakeven เมื่อกำไร +1 ATR, Trailing 1 ATR เริ่ม +1.5 ATR"
+          ]
+        ],
+        "note": "Reproduced R02 A2 control exactly (43 trades, -$38.47); 36 trades match A4 identically."
+      },
+      {
+        "id": "A4",
+        "label": "A4 · Wave Latch",
+        "n": 39,
+        "w": 15,
+        "l": 24,
+        "net": -42.08,
+        "pf": 0.81,
+        "dd": 117.91,
+        "ddpct": 2.358,
+        "end_balance": 4957.93,
+        "daily": [
+          0,
+          -12.4,
+          -12.4,
+          -32.92,
+          -32.92,
+          -32.92,
+          -34.17,
+          -46.55,
+          -46.55,
+          -21.85,
+          -9.21,
+          -9.21,
+          -9.21,
+          15.32,
+          15.15,
+          12.16,
+          -12.79,
+          -12.79,
+          -12.79,
+          -12.79,
+          -37.63,
+          -74.56,
+          -65.16,
+          -63.25,
+          -63.01,
+          -63.01,
+          -63.01,
+          -32.82,
+          -45.38,
+          -42.07
+        ],
+        "source": "TradelistExport4.xlsx",
+        "sqx": "R04_A4_PB_ATR_WAVE_LATCH.sqx",
+        "flow": [
+          [
+            "H1 Trend",
+            "EMA50/200",
+            "EMA50≥EMA200 + slope ขึ้นสำหรับ BUY, ตรงข้ามสำหรับ SELL"
+          ],
+          [
+            "M15 Pullback",
+            "EMA20 reclaim",
+            "Close[2] ฝั่งตรงข้าม EMA20, Close[1] ข้าม EMA20 กลับตามเทรนด์"
+          ],
+          [
+            "Signal",
+            "Closed-bar",
+            "Momentum Close[1] เทียบ Close[2], ต้อง Flat"
+          ],
+          [
+            "Wave Latch",
+            "Consumed + 2 closes",
+            "บันทึก BuyWaveConsumed / SellWaveConsumed หลัง EnterAtMarket; reset หลัง 2 แท่ง M15 ปิดฝั่งตรงข้าม EMA20; ยังไม่ใช่ Setup ID ที่คงทนต่อรีสตาร์ต"
+          ],
+          [
+            "Risk",
+            "0.25%",
+            "RiskFixedPctOfAccount + Volume decimals 2; min-lot fail-closed ยังไม่พิสูจน์"
+          ],
+          [
+            "Exit",
+            "BE+1 / Trail+1.5",
+            "SL 2×ATR14, TP 4×ATR14; Breakeven เมื่อกำไร +1 ATR, Trailing 1 ATR เริ่ม +1.5 ATR"
+          ]
+        ],
+        "note": "เทียบ A2: หาย 7 ไม้ (รวม -$2.76) แต่มีใหม่ 3 ไม้ (รวม -$6.37); จึงแย่ลง $3.61. ยอดรวม P/L -$42.08 vs Balance -$42.07 ต่าง 1 เซนต์จากการปัดเศษ."
+      },
+      {
+        "id": "B3",
+        "label": "B3 Control · Session Breakout",
+        "n": 13,
+        "w": 5,
+        "l": 8,
+        "net": 24.17,
+        "pf": 1.24,
+        "dd": 50.39,
+        "ddpct": 1.008,
+        "end_balance": 5024.17,
+        "daily": [
+          0,
+          24.88,
+          74.56,
+          62.11,
+          62.11,
+          62.11,
+          62.11,
+          49.58,
+          37.04,
+          62.16,
+          36.84,
+          36.84,
+          36.84,
+          24.29,
+          24.29,
+          24.29,
+          24.29,
+          36.79,
+          36.79,
+          36.79,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17
+        ],
+        "source": "TradelistExport3.xlsx",
+        "sqx": "R04_CONTROL_B3_LOCKED.sqx",
+        "flow": [
+          [
+            "M30 Range",
+            "12-bar Breakout",
+            "Close[1] ทะลุ Highest/Lowest 12 แท่ง M30; Close[2] ไม่ทะลุ"
+          ],
+          [
+            "M15 Confirm",
+            "Momentum Close",
+            "แท่ง M15 ปิดตามทิศทาง Breakout"
+          ],
+          [
+            "Session",
+            "12:00–14:00",
+            "LimitTimeRange ใน SQX เปิดจริง; เวลาตาม Data Clock ไม่ใช่เวลาไทย"
+          ],
+          [
+            "Risk",
+            "0.25%",
+            "RiskFixedPctOfAccount, Volume decimals 2; ตรวจ SL risk จริงยังไม่ครบ"
+          ],
+          [
+            "Exit",
+            "2 ATR / 4 ATR",
+            "SL 2×ATR14, TP 4×ATR14; ไม่มี BE/Trailing"
+          ]
+        ],
+        "note": "Reproduced R03 B3 control exactly. Positive only September 2026, the month used to select the session window; cannot be called OOS."
+      },
+      {
+        "id": "B3-Q",
+        "label": "B3-Q · Directional Structure",
+        "n": 9,
+        "w": 3,
+        "l": 6,
+        "net": -0.65,
+        "pf": 0.991,
+        "dd": 75.21,
+        "ddpct": 1.504,
+        "end_balance": 4999.35,
+        "daily": [
+          0,
+          24.88,
+          74.56,
+          62.11,
+          62.11,
+          62.11,
+          62.11,
+          49.58,
+          37.04,
+          37.04,
+          24.37,
+          24.37,
+          24.37,
+          11.82,
+          11.82,
+          11.82,
+          11.82,
+          11.82,
+          11.82,
+          11.82,
+          -0.65,
+          -0.65,
+          -0.65,
+          -0.65,
+          -0.65,
+          -0.65,
+          -0.65,
+          -0.65,
+          -0.65,
+          -0.65
+        ],
+        "source": "TradelistExport1(1).xlsx",
+        "sqx": "R04_B3Q_M30_DIRECTIONAL_STRUCTURE.sqx",
+        "flow": [
+          [
+            "M30 Range",
+            "12-bar Breakout",
+            "Close[1] ทะลุ Highest/Lowest 12 แท่ง M30; Close[2] ไม่ทะลุ"
+          ],
+          [
+            "M30 Structure",
+            "Higher Low / Lower High",
+            "BUY Low(M30)[1]≥Low(M30)[2]; SELL High(M30)[1]<High(M30)[2]. เพิ่มจาก B3"
+          ],
+          [
+            "M15 Confirm",
+            "Momentum Close",
+            "แท่ง M15 ปิดตามทิศทาง Breakout"
+          ],
+          [
+            "Session",
+            "12:00–14:00",
+            "LimitTimeRange ใน SQX เปิดจริง; เวลาตาม Data Clock ไม่ใช่เวลาไทย"
+          ],
+          [
+            "Risk",
+            "0.25%",
+            "RiskFixedPctOfAccount, Volume decimals 2; ตรวจ SL risk จริงยังไม่ครบ"
+          ],
+          [
+            "Exit",
+            "2 ATR / 4 ATR",
+            "SL 2×ATR14, TP 4×ATR14; ไม่มี BE/Trailing"
+          ]
+        ],
+        "note": "ตัดสัญญาณ B3 ออก 4 ไม้ที่เคยรวม +$24.97 (2 TP + 2 SL); สัญญาณ 9 ไม้ที่เหลือมีผลรวมใกล้คุ้มทุน PF 0.99. ไม่ใช่การเพิ่ม Edge."
+      }
+    ],
+    "pairs": {
+      "pullback": {
+        "control": "A2",
+        "variant": "A4",
+        "matched_unchanged_trades": 36,
+        "removed_trades": 7,
+        "removed_sum": -2.76,
+        "added_trades": 3,
+        "added_sum": -6.37,
+        "net_delta": -3.61,
+        "explanation": "Re-entry timing/order inventory changed, but no immutable Setup ID in trade logs. Cannot prove all exclusions are duplicate setups."
+      },
+      "breakout": {
+        "control": "B3",
+        "variant": "B3-Q",
+        "matched_trades": 9,
+        "removed_trades": 4,
+        "removed_sum": 24.97,
+        "new_trades": 0,
+        "matched_control_net": -0.8,
+        "matched_variant_net": -0.65,
+        "matched_pnl_rounding_or_equity_difference": 0.15,
+        "net_delta": -24.82,
+        "explanation": "Added M30 directional structure filter excluded 2 profitable and 2 losing trades; net removed P/L was positive."
+      }
+    },
+    "qa": {
+      "control_reproduced": true,
+      "source_xlsx_balances_reconciled": true,
+      "a4_rounding_note": "Sum of displayed trade P/L = -$42.08; final balance -$42.07 due to rounding to two decimal places",
+      "rules_verified": "A4 has 2 latch state variables and 2 rearm rules; B3-Q adds BUY Low[1]>=Low[2], SELL High[1]<High[2] M30",
+      "tester_settings_identical_within_pair": true,
+      "settings": "M15 main / M30 subchart; fixed spread 70; slippage 10; tests 2026-09; 0.25% risk sizing; B3/B3Q 12:00–14:00",
+      "risk_limitations": "No floating equity DD, genuine OOS, independent realistic costs or broker forward validation supplied"
+    },
+    "decision": "Both new filters fail to improve September closed net P/L, but no claim that either universally fails on unseen data."
   }
 }
