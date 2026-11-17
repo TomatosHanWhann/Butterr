@@ -1,6 +1,6 @@
 {
   "schema": "atlas.research-runs.v2",
-  "updated_at": "2026-11-17T03:06:00+07:00",
+  "updated_at": "2026-11-17",
   "visibility": "public research; no account credentials",
   "readme": "3 HISTORICAL variants on SAME Exness September 2026 period, not 3 independent months or OOS. All have negative net PnL. Closed Balance DD is not floating equity DD.",
   "runs": [
@@ -882,5 +882,351 @@
       "C3 contains only 4 trades; result matches previous control",
       "A1 final balance difference from sum rounded individual PnL is ~ $0.01"
     ]
+  },
+  "r03": {
+    "label": "ATLAS GOLD R03 · 3 user-run SQX backtests",
+    "status": "IST_PRELIMINARY",
+    "period": "Sep 2026",
+    "source_timezone": "SQX data clock",
+    "is_oos": false,
+    "source": "User-uploaded three XLSX trade lists and 3 result-carrying Native SQX, matched by strategy settings, open timestamp / side / entry price",
+    "source_files": [
+      "TradelistExport1212.xlsx",
+      "TradelistExport213123.xlsx",
+      "TradelistExport333333.xlsx"
+    ],
+    "settings": {
+      "capital": 5000,
+      "symbol": "XAUUSDc_EXNESS_202609_M1_AUDIT",
+      "spread": 70,
+      "slippage": 10,
+      "commission": "None",
+      "swap": "Off",
+      "risk_nominal": "0.25%",
+      "test_window": "Sep 2026",
+      "maxdd_kind": "Closed Balance Peak to Trough, not Floating Equity DD"
+    },
+    "qa": {
+      "A3": "MaxTradesPerDay=2 in settings.xml; at most 2 opens per data-calendar day; entry/exit native parameters match A2",
+      "B3": "LimitTimeRange=true From=1200 To=1400 ExitAtEndOfRange=false; native Entry/Exit identical B1; metadata description still says 12–20 (stale)",
+      "B4": "EMA filter Native IF uses Chart#2 H1 (60m), EMA50/200 and slope [1]/[4]; Native Then values same as B2",
+      "all": "All IST. Trade-list P/L and end Balance reconcile within $0.02 rounding; no evidence of OOS or float-equity gate."
+    },
+    "runs": [
+      {
+        "id": "A3",
+        "label": "A3 · Pullback Max 2/day",
+        "source": "TradelistExport1212.xlsx",
+        "sqx": "R03_A3_PB_ATR_MAX2_DAY.sqx",
+        "baseline": "A2",
+        "n": 32,
+        "w": 11,
+        "l": 21,
+        "net": -53.7,
+        "pf": 0.71039,
+        "winrate": 34.375,
+        "dd": 110.15,
+        "ddpct": 2.203,
+        "ends": 4946.3,
+        "buy": 5,
+        "sell": 27,
+        "first": "2026-09-02",
+        "last": "2026-09-30",
+        "exits": {
+          "SL": 15,
+          "PT": 3,
+          "TrailingStop": 7,
+          "MoveSL2BE": 6,
+          "EndTest": 1
+        },
+        "daily": [
+          0,
+          -12.4,
+          -12.4,
+          -20.48,
+          -20.48,
+          -20.48,
+          -21.73,
+          -34.29,
+          -34.29,
+          -9.59,
+          3.18,
+          3.18,
+          3.18,
+          28.11,
+          40.49,
+          27.84,
+          2.89,
+          2.89,
+          2.89,
+          2.89,
+          -22.11,
+          -47.03,
+          -37.72,
+          -37.89,
+          -37.72,
+          -37.72,
+          -37.72,
+          -32.16,
+          -57.01,
+          -53.7
+        ],
+        "flow": [
+          [
+            "H1 Trend",
+            "EMA50/200 + slope",
+            "H1 EMA50 เทียบ EMA200 และ slope EMA50 แท่งปิด"
+          ],
+          [
+            "M15 Pullback",
+            "EMA20 reclaim",
+            "ราคากลับผ่าน EMA20 ตามฝั่งเทรนด์"
+          ],
+          [
+            "Signal",
+            "M15 close",
+            "เข้าเมื่อแท่งปิดยืนยัน และสถานะอนุญาต"
+          ],
+          [
+            "Trade Limit",
+            "≤2/day",
+            "Test Trading Options MaxTradesPerDay=2; Trade List ไม่เกิน 2 ครั้งตามวันเปิด แต่ยังไม่ได้ตรวจ Setup fingerprint"
+          ],
+          [
+            "Risk",
+            "0.25% nominal",
+            "ขนาด lot ตามเงื่อนไข SQX; การปัด lot และ min-lot fail-closed ยังไม่ยืนยัน"
+          ],
+          [
+            "ATR Exit",
+            "BE+1 / Trail+1.5",
+            "คง SL 2ATR / TP 4ATR; ย้าย BE ที่ +1ATR และเริ่ม trailing ระยะ 1ATR ที่ +1.5ATR"
+          ]
+        ],
+        "vs": {
+          "baseline_net": -38.47,
+          "baseline_n": 43,
+          "net_delta": -15.23,
+          "common": 29,
+          "baseline_only": 14,
+          "candidate_only": 3,
+          "common_new_net": -28.68,
+          "common_baseline_net": -28.91,
+          "candidate_unique_net": -25.02,
+          "baseline_excluded_net": -9.56
+        },
+        "note": "จำกัดเทรดต่อวันได้จริง แต่ไม่ได้แก้คุณภาพสัญญาณ; จำนวนและเวลาของบางสัญญาณเปลี่ยนด้วย"
+      },
+      {
+        "id": "B3",
+        "label": "B3 · Breakout 12–14",
+        "source": "TradelistExport213123.xlsx",
+        "sqx": "R03_B3_BRK_FIXED_WINDOW_12_14.sqx",
+        "baseline": "B1",
+        "n": 13,
+        "w": 5,
+        "l": 8,
+        "net": 24.17,
+        "pf": 1.24019,
+        "winrate": 38.4615,
+        "dd": 50.39,
+        "ddpct": 1.008,
+        "ends": 5024.17,
+        "buy": 8,
+        "sell": 5,
+        "first": "2026-09-02",
+        "last": "2026-09-21",
+        "exits": {
+          "PT": 5,
+          "SL": 8
+        },
+        "daily": [
+          0,
+          24.88,
+          74.56,
+          62.11,
+          62.11,
+          62.11,
+          62.11,
+          49.58,
+          37.04,
+          62.16,
+          36.84,
+          36.84,
+          36.84,
+          24.29,
+          24.29,
+          24.29,
+          24.29,
+          36.79,
+          36.79,
+          36.79,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17,
+          24.17
+        ],
+        "flow": [
+          [
+            "M30 Range",
+            "12-bar breakout",
+            "M30 ปิดทะลุ Highest/Lowest 12 แท่งก่อนหน้า"
+          ],
+          [
+            "M15 Momentum",
+            "Close confirms",
+            "M15 ยืนทิศทางเดียวกัน"
+          ],
+          [
+            "Entry Time",
+            "12:00–14:00",
+            "SQX Trading Options กำหนด 12:00–14:00 ตาม Data Time; ExitAtEndOfRange=false"
+          ],
+          [
+            "Position Gate",
+            "1 position",
+            "จำกัดไม่ให้เปิดสถานะซ้อนตาม Magic/strategy setup เดิมใน Native rule"
+          ],
+          [
+            "Risk",
+            "0.25% nominal",
+            "Position sizing ตาม Risk Money Management ยังต้องตรวจ min lot"
+          ],
+          [
+            "Fixed Exit",
+            "2ATR SL / 4ATR TP",
+            "ไม่ใช้ BE/Trailing ใน B3"
+          ]
+        ],
+        "vs": {
+          "baseline_net": -127.7,
+          "baseline_n": 27,
+          "net_delta": 151.87,
+          "common": 13,
+          "baseline_only": 14,
+          "candidate_only": 0,
+          "common_new_net": 24.17,
+          "common_baseline_net": 24.35,
+          "candidate_unique_net": 0,
+          "baseline_excluded_net": -152.05
+        },
+        "note": "กำไรบวกจริงในเดือนที่ใช้เลือกเวลา แต่มีเพียง 13 เทรด; ตัดกำไรก้อนเดียวเกือบ $25 จะกลับมาติดลบ; ไม่ใช่ OOS"
+      },
+      {
+        "id": "B4",
+        "label": "B4 · Breakout H1 Trend",
+        "source": "TradelistExport333333.xlsx",
+        "sqx": "R03_B4_BRK_ATR_H1_TREND.sqx",
+        "baseline": "B2",
+        "n": 8,
+        "w": 2,
+        "l": 6,
+        "net": -25.4,
+        "pf": 0.59574,
+        "winrate": 25,
+        "dd": 62.86,
+        "ddpct": 1.257,
+        "ends": 4974.6,
+        "buy": 0,
+        "sell": 8,
+        "first": "2026-09-08",
+        "last": "2026-09-29",
+        "exits": {
+          "PT": 1,
+          "SL": 5,
+          "TrailingStop": 1,
+          "MoveSL2BE": 1
+        },
+        "daily": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          12.69,
+          37.46,
+          24.74,
+          24.74,
+          24.74,
+          12.19,
+          12.19,
+          12.19,
+          12.19,
+          12.19,
+          12.19,
+          12.19,
+          12.19,
+          12.19,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -0.4,
+          -12.86,
+          -25.4,
+          -25.4
+        ],
+        "flow": [
+          [
+            "M30 Range",
+            "12-bar breakout",
+            "M30 ปิดทะลุกรอบ 12 แท่ง"
+          ],
+          [
+            "M15 Momentum",
+            "Confirm direction",
+            "แท่ง M15 ยืนยัน Momentum ตามฝั่ง Breakout"
+          ],
+          [
+            "H1 Filter",
+            "EMA50 / EMA200",
+            "BUY EMA50[1]≥EMA200[1], EMA50[1]≥EMA50[4]; SELL กลับด้าน; SQX chart #2 คือ H1"
+          ],
+          [
+            "Entry Time",
+            "12:00–20:00",
+            "SQX Trading Options คงช่วง 12:00–20:00"
+          ],
+          [
+            "Risk",
+            "0.25% nominal",
+            "กำหนด sizing เดิมของ B2"
+          ],
+          [
+            "ATR Exit",
+            "BE+1 / Trail+1.5",
+            "SL 2ATR TP 4ATR, BE +1ATR และ trailing 1ATR เริ่ม +1.5ATR"
+          ]
+        ],
+        "vs": {
+          "baseline_net": -77.42,
+          "baseline_n": 28,
+          "net_delta": 52.02,
+          "common": 8,
+          "baseline_only": 20,
+          "candidate_only": 0,
+          "common_new_net": -25.42,
+          "common_baseline_net": -24.83,
+          "candidate_unique_net": 0,
+          "baseline_excluded_net": -52.59
+        },
+        "note": "สัญญาณที่เหลือ 8 รายการเป็น SELL ทั้งหมดและยังขาดทุน; รวมกำไรสุทธิจาก Balance (-25.40) ต่างผลรวม P/L ที่ปัดทศนิยม 0.02"
+      }
+    ],
+    "interpretation": {
+      "best_in_sample": "B3",
+      "proven_champion": false,
+      "next_validation": "Untouched multi-month OOS with consistent realistic execution costs and floating DD; no extra fitting of session window to Sep 2026",
+      "caution": "B3 time window was selected based on September results, so September positive is discovery, not independent confirmation."
+    }
   }
 }
